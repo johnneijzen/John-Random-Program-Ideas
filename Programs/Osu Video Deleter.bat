@@ -12,5 +12,5 @@ IF %check%==y (
 	echo Restart program
 	pause
 )
-echo Thank You For Using John Osu Video Deleter Program press any key to quit
+echo Thank You Using John Osu Video Deleter Program press any key to quit
 pause
