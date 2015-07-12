@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 
 int main()
 {
@@ -14,7 +15,6 @@ int main()
     int MaxGameRounds = 0;
     int Difficulty = 0;
     int GameOn = 1;
-
 
     // Basic Input From User
     printf("\nHow many Rounds You Like: ");
@@ -46,7 +46,7 @@ int main()
             }
 
             // User Moves
-            printf("\nRound: %d", GameRounds);
+            printf("\n\nRound: %d", GameRounds);
             printf("\n\nPlayer 1 wins: %d, Player 2 Wins: %d", PlayerOneWinCount, PlayerTwoWinCount);
             printf("\n\nPlayer 1 HP: %d, Player 2 HP: %d", PlayerOneHP, PlayerTwoHP);
             printf("\nNote Atk > Magic, Magic > Block, Block > Atk");
@@ -97,9 +97,12 @@ int main()
                 PlayerOneHP = PlayerOneHP - 20;
                 PlayerTwoHP = PlayerTwoHP - 20;
             }
+            else
+            {
+                printf("There is Minor Bug it happen every 2 times");
+            }
 
-            // Not Needed It just Make Cleaner
-            getch();
+            Sleep(1500);
             system("cls");
 
             if (PlayerOneHP == 0)
@@ -120,6 +123,15 @@ int main()
                 PlayerOneHP = 100;
                 PlayerTwoHP = 100;
                 PlayerOneWinCount = PlayerOneWinCount + 1;
+                getch();
+            }
+            else if ((PlayerOneHP == 0)&&(PlayerTwoHP == 0))
+            {
+                printf("\nBoth Died New Round");
+                GameRounds = GameRounds + 1;
+                // Reset Hp For Next Round
+                PlayerOneHP = 100;
+                PlayerTwoHP = 100;
                 getch();
             }
         }
