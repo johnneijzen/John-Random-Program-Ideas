@@ -90,7 +90,7 @@ int main()
             Sleep(1500);
             system("cls");
 
-            if (PlayerOneHP == 0)
+            if ((PlayerOneHP == 0)&&(PlayerTwoHP > 0))
             {
                 printf("\nPlayer Two Won Round");
                 GameRounds = GameRounds + 1;
@@ -100,7 +100,7 @@ int main()
                 PlayerTwoWinCount = PlayerTwoWinCount + 1;
                 getch();
             }
-            else if (PlayerTwoHP == 0)
+            else if ((PlayerTwoHP == 0)&&(PlayerOneHP > 0))
             {
                 printf("\nPlayer One Won Round");
                 GameRounds = GameRounds + 1;
