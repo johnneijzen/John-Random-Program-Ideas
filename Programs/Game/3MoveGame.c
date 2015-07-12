@@ -134,7 +134,12 @@ int main()
             }
             else
             {
-                printf("\nBAKA! DRAW! NO ONE WON!");
+                int x;
+                for ( x = 0; x < 100; x++ ) {
+                    // FOR FUN SPAM BAKA!
+                    Sleep(30);
+                    printf("\nBAKA! DRAW! NO ONE WON!");
+                }
                 GameOn = 0;
             }
         }
