@@ -13,14 +13,11 @@ int main()
     int PlayerTwoWinCount = 0;
     int GameRounds = 0;
     int MaxGameRounds = 0;
-    int Difficulty = 0;
     int GameOn = 1;
 
     // Basic Input From User
     printf("\nHow many Rounds You Like: ");
     scanf("%d",&MaxGameRounds);
-    printf("\nSelect Difficulty 1 = easy, 2 = mid, 3 = hard: ");
-    scanf("%d",&Difficulty);
     printf("\nPress Any Key To Start");
     getch();
     system("cls");
@@ -31,16 +28,8 @@ int main()
         {
             PlayerOneMove = 0;
             PlayerTwoMove = 0;
-            // AI Player 2 Moves Chance of get hit is great as difficulty get higher
-            if (Difficulty == 1)
-            {
-                PlayerTwoMove = rand() % 4;
-            }
-            else if (Difficulty == 2)
-            {
-                PlayerTwoMove = rand() % 4;
-            }
-            else
+            // AI Player 2 Moves
+            while ( PlayerTwoMove == 0 )
             {
                 PlayerTwoMove = rand() % 4;
             }
@@ -96,10 +85,6 @@ int main()
                 printf("\nBoth Player Picked ATK So Both Player Get DMG");
                 PlayerOneHP = PlayerOneHP - 20;
                 PlayerTwoHP = PlayerTwoHP - 20;
-            }
-            else
-            {
-                printf("There is Minor Bug it happen every 2 times");
             }
 
             Sleep(1500);
