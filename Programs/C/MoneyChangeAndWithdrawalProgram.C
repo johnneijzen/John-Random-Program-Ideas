@@ -88,7 +88,7 @@ int main()
 			UserAmount = UserAmount % 1;
 		}
 
-		while(Peso1000Bill > UserPeso1000Bill)
+        while(Peso1000Bill > UserPeso1000Bill)
         {
             Peso500Bill = Peso500Bill + 2;
             Peso1000Bill = Peso1000Bill - 1;
