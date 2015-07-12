@@ -56,7 +56,7 @@ int main()
 		{
 			Peso1000Bill = UserAmount / 1000;
 			UserAmount = UserAmount % 1000;
-        }
+		}
 
 		if (UserAmount >= 500)
 		{
