@@ -54,8 +54,6 @@ int main()
 	{
 		if (UserAmount >= 1000)
 		{
-			//thousandsbills=machine
-			//useramount= UserAmount - thousandbills
 			Peso1000Bill = UserAmount / 1000;
 			UserAmount = UserAmount % 1000;
         }
@@ -92,56 +90,39 @@ int main()
 
 		while(Peso1000Bill > UserPeso1000Bill)
         {
-            if (Peso1000Bill > UserPeso1000Bill)
-            {
-                Peso500Bill = Peso500Bill + 2;
-                Peso1000Bill = Peso1000Bill - 1;
-            }
+            Peso500Bill = Peso500Bill + 2;
+            Peso1000Bill = Peso1000Bill - 1;
         }
 
         while(Peso500Bill > UserPeso500Bill)
         {
-            if (Peso500Bill > UserPeso500Bill)
-            {
-                Peso100Bill = Peso100Bill + 5;
-                Peso500Bill = Peso500Bill - 1;
-            }
+            Peso100Bill = Peso100Bill + 5;
+            Peso500Bill = Peso500Bill - 1;
         }
 
         while(Peso100Bill > UserPeso100Bill)
         {
-            if (Peso100Bill > UserPeso100Bill)
-            {
-                Peso10Coin = Peso10Coin + 10;
-                Peso100Bill = Peso100Bill - 1;
-            }
+            Peso10Coin = Peso10Coin + 10;
+            Peso100Bill = Peso100Bill - 1;
         }
 
         while(Peso10Coin > UserPeso10Coin)
         {
-            if (Peso10Coin > UserPeso10Coin)
-            {
-                Peso5Coin = Peso5Coin + 2;
-                Peso10Coin = Peso10Coin - 1;
-            }
+            Peso5Coin = Peso5Coin + 2;
+            Peso10Coin = Peso10Coin - 1;
         }
 
         while(Peso5Coin > UserPeso5Coin)
         {
-            if (Peso5Coin > UserPeso5Coin)
-            {
-                Peso1Coin = Peso1Coin + 5;
-                Peso5Coin = Peso5Coin - 1;
-            }
+            Peso1Coin = Peso1Coin + 5;
+            Peso5Coin = Peso5Coin - 1;
         }
 
         while(Peso1Coin > UserPeso1Coin)
         {
-            if (Peso1Coin > UserPeso1Coin)
-            {
-                printf("Sorry Sir Cant Be Done With Amount You Give");
-                return 0;
-            }
+            printf("Sorry Sir Cant Be Done With Amount You Give");
+            getch();
+            return 0;
         }
 
     printf("You will receive: \n");
@@ -151,7 +132,7 @@ int main()
     printf("10 Peso Bill: %d\n", Peso10Coin);
     printf("5 Peso Bill: %d\n", Peso5Coin);
     printf("1 Peso Bill: %d\n", Peso1Coin);
-
+    getch();
     }
     return 0;
 }
