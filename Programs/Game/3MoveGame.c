@@ -29,10 +29,7 @@ int main()
             PlayerOneMove = 0;
             PlayerTwoMove = 0;
             // AI Player 2 Moves
-            while ( PlayerTwoMove == 0 )
-            {
-                PlayerTwoMove = rand() % 4;
-            }
+            PlayerTwoMove = 1 + (rand() % 4);
 
             // User Moves
             printf("\n\nRound: %d", GameRounds);
