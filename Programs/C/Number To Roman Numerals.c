@@ -22,7 +22,8 @@ int main()
 	scanf("%d", &UserNumber);
 	while ((UserNumber <=0)||(UserNumber > 3999))
     {
-        printf("Number To High Or Too Low Try Aging: ");
+        printf("Note Only Number from 1 to 3999 is allowed");
+        printf("\nError Number Is Too High Or Too Low Try Aging: ");
         scanf("%d", &UserNumber);
     }
 
