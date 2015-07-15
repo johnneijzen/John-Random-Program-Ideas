@@ -20,6 +20,11 @@ int main()
 
 	printf("Enter Your Number: ");
 	scanf("%d", &UserNumber);
+	while ((UserNumber <=0)||(UserNumber > 3999))
+    {
+        printf("Number To High Or Too Low Try Aging: ");
+        scanf("%d", &UserNumber);
+    }
 
 	while (UserNumber != 0)
 	{
