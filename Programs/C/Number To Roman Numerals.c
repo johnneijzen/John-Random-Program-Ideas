@@ -5,7 +5,7 @@ int main()
 {
     int UserNumber = 0;
     int I = 0; // I = 1
-    int PreI = 0; // IV
+    int PreI = 0; // Means IV
     int V = 0; // V = 5
     int PreV = 0; // Means IX
     int X = 0; // X = 10
