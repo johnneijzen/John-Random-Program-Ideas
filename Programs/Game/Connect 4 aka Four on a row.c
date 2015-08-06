@@ -28,7 +28,15 @@ int Display()
 // Main Code
 int main()
 {
+	int Player = 1;
+	
+	printf("top of grid is coording");
+	printf("\n1 2 3 4 5 6 7\n");
 	Display();
+	if(Player == 1) 
+		printf("Player 1 (1) Turn");
+	if(Player == 2) 
+		printf("Player 2 (2) Turn");
 	
 	return 0;
 	
