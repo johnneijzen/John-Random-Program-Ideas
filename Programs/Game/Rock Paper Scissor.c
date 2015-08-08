@@ -1,6 +1,0 @@
-wrwrowk
-rtwkrwkowt
-
-int main()
-{
-}
