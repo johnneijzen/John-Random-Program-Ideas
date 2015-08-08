@@ -1,0 +1,6 @@
+wrwrowk
+rtwkrwkowt
+
+int main()
+{
+}
