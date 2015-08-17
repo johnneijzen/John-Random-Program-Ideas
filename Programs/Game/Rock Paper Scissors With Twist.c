@@ -53,6 +53,7 @@ int main() // Main Loop
 int playerKeyEvent()
 {
 	printf("Player 1 Wins: %d. Player 2 Wins: %d\n", playerOneWins, playerTwoWins);
+	printf("W Or I is Rock, A or J is Paper, S or K is Scissors, D or L is Lizard, X Or M is Spock\n")
     printf("5\n");
     Sleep(800);
     printf("4\n");
