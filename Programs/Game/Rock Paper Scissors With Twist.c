@@ -1,9 +1,11 @@
 /*
     Version
-        0.02
+        0.04
     Changelog
         0.01 - First Draft
         0.02 - Need Testing Still
+        0.03 - Made Small bug where i forget reset key_code so move keep repeating
+        0.04 - Add Bit of Display for scores
 */
 #include <stdio.h> // For Printf and Scanf
 #include <conio.h> // For kbhit() event
@@ -36,28 +38,38 @@ int main() // Main Loop
         Sleep(2000);
         system("cls");
         rounds = rounds + 1;
+        playerOneMoves = 0;
+    	playerTwoMoves = 0;
     }
-
+    
+    if(playerOneWins > playerTwoWins)
+    	printf("Player One Wins Game");
+	else if (playerTwoWins > playerOneWins)
+		printf("Player Two Wins");
+	else
+		printf("Tied");
 }
 
 int playerKeyEvent()
 {
+	printf("Player 1 Wins: %d. Player 2 Wins: %d\n", playerOneWins, playerTwoWins);
     printf("5\n");
-    Sleep(1000);
+    Sleep(800);
     printf("4\n");
-    Sleep(1000);
+    Sleep(800);
     printf("3\n");
-    Sleep(1000);
+    Sleep(800);
     printf("2\n");
-    Sleep(1000);
+    Sleep(800);
     printf("1\n");
-    Sleep(1000);
+    Sleep(800);
     printf("Pick\n");
-    Sleep(1000);
+    Sleep(800);
     while((playerOneMoves == 0)||(playerTwoMoves == 0))
     {
         if (kbhit())
         {
+        	key_code = ' ';
             key_code = getch();
             if(playerOneMoves == 0)
             {
@@ -147,8 +159,6 @@ int check() // It Checks Who Won
         playerTwoWins = playerTwoWins + 1;
         printf("Player 2 Wins");
     }
-    playerOneMoves = 0;
-    playerTwoMoves = 0;
 }
 
 int display()
