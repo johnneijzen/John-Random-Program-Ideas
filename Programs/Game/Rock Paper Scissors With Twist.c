@@ -43,7 +43,7 @@ int main() // Main Loop
     }
     
     if(playerOneWins > playerTwoWins)
-    	printf("Player One Wins Game");
+		printf("Player One Wins Game");
 	else if (playerTwoWins > playerOneWins)
 		printf("Player Two Wins");
 	else
