@@ -1,6 +1,6 @@
 /*
     Version
-        0.06 by John V. Neijzen
+        0.07 by John V. Neijzen
     Changelog
         0.01 - First Draft
         0.02 - Need Testing Still
@@ -13,6 +13,10 @@
                       - Fixed: Typo with >= vs >
         0.06 9/14/2015 - Add more rand() to rand(()
         	 - Adding 7 moves version bit
+        0.07 9/20/2015 - Adding 3 moves Just in case you want classic
+                       - Add Fully 7 Version
+                       - Fully Rework Check Code to work with 3 5 7 moves version.
+                       - Fix A.I. To Work different Versions.
 */
 #include <stdlib.h> // Standard Library no use yet TODO:
 #include <stdio.h> // For Printf and Scanf
@@ -38,8 +42,9 @@ int playerOneMoves = 0;
 int playerTwoMoves = 0;
 int playerOneWins = 0;
 int playerTwoWins = 0;
-int key;
-int type = 0;
+int draw = 0;
+int moves = 3;
+char key;
 
 void aiEasy() // only 3 out 10 chance to counter
 {
@@ -47,47 +52,37 @@ void aiEasy() // only 3 out 10 chance to counter
 
     if(r <= 3)
     {
-        if(playerOneMoves == 1) // Paper Beat Rock
-        	playerTwoMoves = 2;
-    	if(playerOneMoves == 2) // Scissors Beat Paper
-        	playerTwoMoves = 3;
-    	if(playerOneMoves == 3) // Rock Beat Scissors
-        	playerTwoMoves = 1;
-    	if(playerOneMoves == 4) // Scissors Beat Lizard
-        	playerTwoMoves = 3;
-    	if(playerOneMoves == 5) // Lizard Beat Spock
-        	playerTwoMoves = 4;    
-        	
-    	if(type == 1)
-    	{
-    		if(playerOneMoves == 6)
-    			playerTwoMoves = 1;
-    		if(playerOneMoves == 7)
-    			playerTwoMoves = 6;
-		}
+        if(playerOneMoves == 1)
+            playerTwoMoves = 2;
+        if(playerOneMoves == 2)
+            playerTwoMoves = 3;
+        if(playerOneMoves == 3)
+            playerTwoMoves = 1;
+        if(playerOneMoves == 4)
+            playerTwoMoves = 1;
+        if(playerOneMoves == 5)
+            playerTwoMoves = 2;
+        if(playerOneMoves == 6)
+            playerTwoMoves = 2;
+        if(playerOneMoves == 7)
+            playerTwoMoves = 1;
     }
     else
     {
-        if(playerOneMoves == 1) // Rock Beat Scissors
+        if(playerOneMoves == 1)
             playerTwoMoves = 3;
-        if(playerOneMoves == 1) // Rock Beat Lizard
-            playerTwoMoves = 4;
-        if(playerOneMoves == 2) // Paper Beat Rock
+        if(playerOneMoves == 2)
             playerTwoMoves = 1;
-        if(playerOneMoves == 2) // Paper Beat Spock
-            playerTwoMoves = 5;
-        if(playerOneMoves == 3) // Scissors Beat Paper
+        if(playerOneMoves == 3)
             playerTwoMoves = 2;
-        if(playerOneMoves == 3) // Scissors Beat Lizard
-            playerTwoMoves = 4;
-        if(playerOneMoves == 4) // Lizard Beat Paper
+        if(playerOneMoves == 4)
             playerTwoMoves = 2;
-        if(playerOneMoves == 4) // Lizard Beat Spock
-            playerTwoMoves = 5;
-        if(playerOneMoves == 5) // Spock Beat Rock
+        if(playerOneMoves == 5)
             playerTwoMoves = 1;
-        if(playerOneMoves == 5) // Spock Beat Scissors
-            playerTwoMoves = 3;
+        if(playerOneMoves == 6)
+            playerTwoMoves = 1;
+        if(playerOneMoves == 7)
+            playerTwoMoves = 2;
     }
 }
 
@@ -97,70 +92,56 @@ void aiHard() // only 7 out 10 chance to counter
 
     if(r <= 7)
     {
-       if(playerOneMoves == 1) // Paper Beat Rock
-        	playerTwoMoves = 2;
-    	if(playerOneMoves == 2) // Scissors Beat Paper
-        	playerTwoMoves = 3;
-    	if(playerOneMoves == 3) // Rock Beat Scissors
-        	playerTwoMoves = 1;
-    	if(playerOneMoves == 4) // Scissors Beat Lizard
-        	playerTwoMoves = 3;
-    	if(playerOneMoves == 5) // Lizard Beat Spock
-        	playerTwoMoves = 4;    
-        	
-    	if(type == 1)
-    	{
-    		if(playerOneMoves == 6)
-    			playerTwoMoves = 1;
-    		if(playerOneMoves == 7)
-    			playerTwoMoves = 6;
-		}
+        if(playerOneMoves == 1)
+            playerTwoMoves = 2;
+        if(playerOneMoves == 2)
+            playerTwoMoves = 3;
+        if(playerOneMoves == 3)
+            playerTwoMoves = 1;
+        if(playerOneMoves == 4)
+            playerTwoMoves = 1;
+        if(playerOneMoves == 5)
+            playerTwoMoves = 2;
+        if(playerOneMoves == 6)
+            playerTwoMoves = 2;
+        if(playerOneMoves == 7)
+            playerTwoMoves = 1;
     }
     else
     {
-        if(playerOneMoves == 1) // Rock Beat Scissors
+        if(playerOneMoves == 1)
             playerTwoMoves = 3;
-        if(playerOneMoves == 1) // Rock Beat Lizard
-            playerTwoMoves = 4;
-        if(playerOneMoves == 2) // Paper Beat Rock
+        if(playerOneMoves == 2)
             playerTwoMoves = 1;
-        if(playerOneMoves == 2) // Paper Beat Spock
-            playerTwoMoves = 5;
-        if(playerOneMoves == 3) // Scissors Beat Paper
+        if(playerOneMoves == 3)
             playerTwoMoves = 2;
-        if(playerOneMoves == 3) // Scissors Beat Lizard
-            playerTwoMoves = 4;
-        if(playerOneMoves == 4) // Lizard Beat Paper
+        if(playerOneMoves == 4)
             playerTwoMoves = 2;
-        if(playerOneMoves == 4) // Lizard Beat Spock
-            playerTwoMoves = 5;
-        if(playerOneMoves == 5) // Spock Beat Rock
+        if(playerOneMoves == 5)
             playerTwoMoves = 1;
-        if(playerOneMoves == 5) // Spock Beat Scissors
-            playerTwoMoves = 3;
+        if(playerOneMoves == 6)
+            playerTwoMoves = 1;
+        if(playerOneMoves == 7)
+            playerTwoMoves = 2;
     }
 }
 
 void aiUnfair() // ALLWAYS WINS XD
 {
-	if(playerOneMoves == 1) // Paper Beat Rock
+    if(playerOneMoves == 1)
         playerTwoMoves = 2;
-    if(playerOneMoves == 2) // Scissors Beat Paper
+    if(playerOneMoves == 2)
         playerTwoMoves = 3;
-    if(playerOneMoves == 3) // Rock Beat Scissors
+    if(playerOneMoves == 3)
         playerTwoMoves = 1;
-    if(playerOneMoves == 4) // Scissors Beat Lizard
-        playerTwoMoves = 3;
-    if(playerOneMoves == 5) // Lizard Beat Spock
-        playerTwoMoves = 4;    
-    
-    if(type == 1)
-    {
-    	if(playerOneMoves == 6)
-    		playerTwoMoves = 1;
-    	if(playerOneMoves == 7)
-    		playerTwoMoves = 6;
-	}
+    if(playerOneMoves == 4)
+        playerTwoMoves = 1;
+    if(playerOneMoves == 5)
+        playerTwoMoves = 2;
+    if(playerOneMoves == 6)
+        playerTwoMoves = 2;
+    if(playerOneMoves == 7)
+        playerTwoMoves = 1;
 }
 
 void playerKeyEvent()
@@ -173,21 +154,43 @@ void playerKeyEvent()
 
             if(playerOneMoves == 0)
             {
-                if(key == 'w')
-                    playerOneMoves = 1;
-                else if(key == 'a')
-                    playerOneMoves = 2;
-                else if(key == 's')
-                    playerOneMoves = 3;
-                else if(key == 'd')
-                    playerOneMoves = 4;
-                else if(key == 'x')
-                    playerOneMoves = 5;
-                else if(type == 1)
+                if(moves == 3)
                 {
-                	if(key == 'q')
+                    if(key == 'q')
+                        playerOneMoves = 1;
+                    else if(key == 'w')
+                        playerOneMoves = 2;
+                    else if(key == 'e')
+                        playerOneMoves = 3;
+                }
+                if(moves == 5)
+                {
+                    if(key == 'q')
+                        playerOneMoves = 1;
+                    else if(key == 'w')
+                        playerOneMoves = 2;
+                    else if(key == 'e')
+                        playerOneMoves = 3;
+                    else if(key == 'a')
+                        playerOneMoves = 4;
+                    else if(key == 's')
+                        playerOneMoves = 5;
+                }
+                if(moves == 7)
+                {
+                    if(key == 'q')
+                        playerOneMoves = 1;
+                    else if(key == 'w')
+                        playerOneMoves = 2;
+                    else if(key == 'e')
+                        playerOneMoves = 3;
+                    else if(key == 'a')
+                        playerOneMoves = 4;
+                    else if(key == 's')
+                        playerOneMoves = 5;
+                	else if(key == 'd')
                     	playerOneMoves = 6;
-                   	if(key == 'e')
+                   	else if(key == 'x')
                     	playerOneMoves = 7;
 				}
             }
@@ -195,21 +198,43 @@ void playerKeyEvent()
             {
                 if(playerTwoMoves == 0)
                 {
-                    if(key == 'i')
-                        playerTwoMoves = 1;
-                    else if(key == 'j')
-                        playerTwoMoves = 2;
-                    else if(key == 'k')
-                        playerTwoMoves = 3;
-                    else if(key == 'l')
-                        playerTwoMoves = 4;
-                    else if(key == 'm')
-                        playerTwoMoves = 5;
-                    else if(type == 1)
-                    	if(key == 'u')
+                    if(moves == 3)
+                    {
+                        if(key == 'u')
+                            playerTwoMoves = 1;
+                        else if(key == 'i')
+                            playerTwoMoves = 2;
+                        else if(key == 'o')
+                            playerTwoMoves = 3;
+                    }
+                    if(moves == 5)
+                    {
+                        if(key == 'u')
+                            playerTwoMoves = 1;
+                        else if(key == 'i')
+                            playerTwoMoves = 2;
+                        else if(key == 'o')
+                            playerTwoMoves = 3;
+                        else if(key == 'j')
+                            playerTwoMoves = 4;
+                        else if(key == 'k')
+                            playerTwoMoves = 5;
+                    }
+                    if(moves == 7)
+                        if(key == 'u')
+                            playerTwoMoves = 1;
+                        else if(key == 'i')
+                            playerTwoMoves = 2;
+                        else if(key == 'o')
+                            playerTwoMoves = 3;
+                        else if(key == 'j')
+                            playerTwoMoves = 4;
+                        else if(key == 'k')
+                            playerTwoMoves = 5;
+                    	else if(key == 'l')
                     		playerTwoMoves = 6;
-                    	if(key == 'o')
-                    		playerTwoMoves = 7;	
+                    	else if(key == 'm')
+                    		playerTwoMoves = 7;
                 }
             }
             else
@@ -225,68 +250,106 @@ void playerKeyEvent()
     }
 }
 
-void check() // It Checks Who Won
+void check()
 {
-    // 1 = Rock. 2 = Paper. 3 = Scissors. 4 = lizard. 5 = Spock.
+    // 1 = Rock. 2 = Paper. 3 = Scissors. 4 = lizard. 5 = Spock. 6 = Dog. 7 = Gun.
     // Tied Check Code
     if((playerOneMoves == 1)&&(playerTwoMoves == 1)||
        (playerOneMoves == 2)&&(playerTwoMoves == 2)||
        (playerOneMoves == 3)&&(playerTwoMoves == 3)||
        (playerOneMoves == 4)&&(playerTwoMoves == 4)||
-       (playerOneMoves == 5)&&(playerTwoMoves == 5))
-       
+       (playerOneMoves == 5)&&(playerTwoMoves == 5)||
+       (playerOneMoves == 6)&&(playerTwoMoves == 6)||
+       (playerOneMoves == 7)&&(playerTwoMoves == 7))
     {
-        printf("Tied");
+        printf("Draw");
+        draw = draw + 1;
     }
-    // Player 1 win. I HATE MYSELFT TOO MANY COMBAINSIONS
-    if((playerOneMoves == 1)&&(playerTwoMoves == 3)|| // Rock Beat Scissors
-       (playerOneMoves == 1)&&(playerTwoMoves == 4)|| // Rock Beat Lizard
-       (playerOneMoves == 2)&&(playerTwoMoves == 1)|| // Paper Beat Rock
-       (playerOneMoves == 2)&&(playerTwoMoves == 5)|| // Paper Beat Spock
-       (playerOneMoves == 3)&&(playerTwoMoves == 2)|| // Scissors Beat Paper
-       (playerOneMoves == 3)&&(playerTwoMoves == 4)|| // Scissors Beat Lizard
-       (playerOneMoves == 4)&&(playerTwoMoves == 2)|| // Lizard Beat Paper
-       (playerOneMoves == 4)&&(playerTwoMoves == 5)|| // Lizard Beat Spock
-       (playerOneMoves == 5)&&(playerTwoMoves == 1)|| // Spock Beat Rock
-       (playerOneMoves == 5)&&(playerTwoMoves == 3)) // Spock Beat Scissors
+
+    // Player 1 Win
+    if((playerOneMoves == 1)&&(playerTwoMoves == 3)|| // Rock Win Against Scissors
+       (playerOneMoves == 1)&&(playerTwoMoves == 4)|| // Rock Win Against Lizard
+       (playerOneMoves == 1)&&(playerTwoMoves == 7)|| // Rock Win Against Gun
+       (playerOneMoves == 2)&&(playerTwoMoves == 1)|| // Paper Win Against Rock
+       (playerOneMoves == 2)&&(playerTwoMoves == 5)|| // Paper Win Against Spock
+       (playerOneMoves == 2)&&(playerTwoMoves == 6)|| // Paper Win Against Dog
+       (playerOneMoves == 3)&&(playerTwoMoves == 2)|| // Scissors Win Against Paper
+       (playerOneMoves == 3)&&(playerTwoMoves == 4)|| // Scissors Win Against Lizard
+       (playerOneMoves == 3)&&(playerTwoMoves == 7)|| // Scissors Win Against Gun
+       (playerOneMoves == 4)&&(playerTwoMoves == 2)|| // Lizard Win Against Paper
+       (playerOneMoves == 4)&&(playerTwoMoves == 5)|| // Lizard Win Against Spock
+       (playerOneMoves == 4)&&(playerTwoMoves == 6)|| // Lizard Win Against Dog
+       (playerOneMoves == 5)&&(playerTwoMoves == 1)|| // Spock Win Against Rock
+       (playerOneMoves == 5)&&(playerTwoMoves == 3)|| // Spock Win Against Scissors
+       (playerOneMoves == 5)&&(playerTwoMoves == 7)|| // Spock Win Against Gun
+       (playerOneMoves == 6)&&(playerTwoMoves == 6)|| // Dog Win Against Rock
+       (playerOneMoves == 6)&&(playerTwoMoves == 6)|| // Dog Win Against Scissors
+       (playerOneMoves == 6)&&(playerTwoMoves == 6)|| // Dog Win Against Spock
+       (playerOneMoves == 7)&&(playerTwoMoves == 2)|| // Gun Win Against Paper
+       (playerOneMoves == 7)&&(playerTwoMoves == 4)|| // Gun Win Against Paper
+       (playerOneMoves == 7)&&(playerTwoMoves == 6))  // Gun Win Against Paper
     {
+        printf("Player 1 Win");
         playerOneWins = playerOneWins + 1;
-        printf("Player 1 Wins");
     }
-    // Player 2 win.
-    if((playerTwoMoves == 1)&&(playerOneMoves == 3)|| // Rock Beat Scissors
-       (playerTwoMoves == 1)&&(playerOneMoves == 4)|| // Rock Beat Lizard
-       (playerTwoMoves == 2)&&(playerOneMoves == 1)|| // Paper Beat Rock
-       (playerTwoMoves == 2)&&(playerOneMoves == 5)|| // Paper Beat Spock
-       (playerTwoMoves == 3)&&(playerOneMoves == 2)|| // Scissors Beat Paper
-       (playerTwoMoves == 3)&&(playerOneMoves == 4)|| // Scissors Beat Lizard
-       (playerTwoMoves == 4)&&(playerOneMoves == 2)|| // Lizard Beat Paper
-       (playerTwoMoves == 4)&&(playerOneMoves == 5)|| // Lizard Beat Spock
-       (playerTwoMoves == 5)&&(playerOneMoves == 1)|| // Spock Beat Rock
-       (playerTwoMoves == 5)&&(playerOneMoves == 3)) // Spock Beat Scissors
+
+    // Player 2 Win
+    if((playerTwoMoves == 1)&&(playerOneMoves == 3)|| // Rock Win Against Scissors
+       (playerTwoMoves == 1)&&(playerOneMoves == 4)|| // Rock Win Against Lizard
+       (playerTwoMoves == 1)&&(playerOneMoves == 7)|| // Rock Win Against Gun
+       (playerTwoMoves == 2)&&(playerOneMoves == 1)|| // Paper Win Against Rock
+       (playerTwoMoves == 2)&&(playerOneMoves == 5)|| // Paper Win Against Spock
+       (playerTwoMoves == 2)&&(playerOneMoves == 6)|| // Paper Win Against Dog
+       (playerTwoMoves == 3)&&(playerOneMoves == 2)|| // Scissors Win Against Paper
+       (playerTwoMoves == 3)&&(playerOneMoves == 4)|| // Scissors Win Against Lizard
+       (playerTwoMoves == 3)&&(playerOneMoves == 7)|| // Scissors Win Against Gun
+       (playerTwoMoves == 4)&&(playerOneMoves == 2)|| // Lizard Win Against Paper
+       (playerTwoMoves == 4)&&(playerOneMoves == 5)|| // Lizard Win Against Spock
+       (playerTwoMoves == 4)&&(playerOneMoves == 6)|| // Lizard Win Against Dog
+       (playerTwoMoves == 5)&&(playerOneMoves == 1)|| // Spock Win Against Rock
+       (playerTwoMoves == 5)&&(playerOneMoves == 3)|| // Spock Win Against Scissors
+       (playerTwoMoves == 5)&&(playerOneMoves == 7)|| // Spock Win Against Gun
+       (playerTwoMoves == 6)&&(playerOneMoves == 6)|| // Dog Win Against Rock
+       (playerTwoMoves == 6)&&(playerOneMoves == 6)|| // Dog Win Against Scissors
+       (playerTwoMoves == 6)&&(playerOneMoves == 6)|| // Dog Win Against Spock
+       (playerTwoMoves == 7)&&(playerOneMoves == 2)|| // Gun Win Against Paper
+       (playerTwoMoves == 7)&&(playerOneMoves == 4)|| // Gun Win Against Paper
+       (playerTwoMoves == 7)&&(playerOneMoves == 6))  // Gun Win Against Paper
     {
+        printf("Player 2 Win");
         playerTwoWins = playerTwoWins + 1;
-        printf("Player 2 Wins");
     }
 }
 
 void roundDisplay()
 {
-    printf("Rounds: %d. Player 1 Wins: %d. Player 2 Wins: %d.\n", rounds, playerOneWins, playerTwoWins);
-	printf("W(Player1) Or I(Player2) is Rock,\nA(Player1) or J(Player2) is Paper,\nS(Player1) or K(Player2) is Scissors\nD(Player1) or L(Player2) is Lizard,\nX(Player1) Or M(Player2) is Spock\n");
+    printf("Rounds: %d. Player 1 Wins: %d. Player 2 Wins: %d. Draw: %d\n", rounds, playerOneWins, playerTwoWins, draw);
+    if(moves == 3)
+        printf("Q(Player1) Or U(Player2) is Rock,\nW(Player1) or I(Player2) is Paper,\nE(Player1) or O(Player2) is Scissors\n");
+	if(moves == 5)
+    {
+        printf("Q(Player1) Or U(Player2) is Rock,\nW(Player1) or I(Player2) is Paper,\nE(Player1) or O(Player2) is Scissors\n");
+        printf("A(Player1) or J(Player2) is Lizard,\nS(Player1) Or K(Player2) is Spock\n");
+    }
+    if(moves == 7)
+    {
+        printf("Q(Player1) Or U(Player2) is Rock,\nW(Player1) or I(Player2) is Paper,\nE(Player1) or O(Player2) is Scissors\n");
+        printf("A(Player1) or J(Player2) is Lizard,\nS(Player1) Or K(Player2) is Spock\n");
+        printf("D(Player1) or L(Player2) is Dog,\nX(Player1) Or M(Player2) is Gun\n");
+    }
     printf("Note: Spamming key will break code\n");
     printf("5\n");
-    Sleep(800);
+    Sleep(900);
     printf("4\n");
-    Sleep(800);
+    Sleep(900);
     printf("3\n");
-    Sleep(800);
+    Sleep(900);
     printf("2\n");
-    Sleep(800);
+    Sleep(900);
     printf("1\n");
-    Sleep(800);
+    Sleep(900);
     printf("Pick\n");
-    Sleep(800);
+    Sleep(900);
 }
 
 void moveDisplay()
@@ -330,12 +393,15 @@ void main() // Main Loop
     printf("Note: There no tie breaker so draw is possible\n");
     scanf("%d", &maxRound);
     system("cls");
-    printf("5 moves version or 7 moves");
-    printf("if 5 moves version type 0 if 7 moves version type 1");
-    scanf("%d", &type);
+    printf("3 or 5 or 7 moves\n");
+    printf("Moves: ");
+    scanf("%d", &moves);
+    system("cls");
     printf("Do You Want AI or 2 player mode\n");
     printf("0 = 2 player,\n1 = AI Easy,\n2 = AI Hard,\n3 = AI UNFAIR\n");
+    printf("A.I.: ");
     scanf("%d", &AI);
+    system("cls");
 
     while(maxRound > rounds)
     {
@@ -344,7 +410,7 @@ void main() // Main Loop
         system("cls");
         moveDisplay();
         check();
-        Sleep(2000);
+        Sleep(3000);
         system("cls");
         rounds = rounds + 1;
         playerOneMoves = 0;
@@ -354,7 +420,9 @@ void main() // Main Loop
     if(playerOneWins > playerTwoWins)
 		printf("Player One Wins Game");
 	else if (playerTwoWins > playerOneWins)
-		printf("Player Two Wins");
+		printf("Player Two Wins Game");
 	else
-		printf("Tied");
+		printf("Draw");
+
+    getch();
 }
