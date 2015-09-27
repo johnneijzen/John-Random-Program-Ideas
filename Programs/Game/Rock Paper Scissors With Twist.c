@@ -1,6 +1,6 @@
 /*
     Version
-        0.07 by John V. Neijzen
+        0.08 by John V. Neijzen
     Changelog
         0.01 - First Draft
         0.02 - Need Testing Still
@@ -17,6 +17,7 @@
                        - Add Fully 7 Version
                        - Fully Rework Check Code to work with 3 5 7 moves version.
                        - Fix A.I. To Work different Versions.
+        0.08 /9/27/2015 - change round system to lives system .
 */
 #include <stdlib.h> // Standard Library no use yet TODO:
 #include <stdio.h> // For Printf and Scanf
@@ -36,12 +37,11 @@ void aiUnfair();
 
 // Some Global Variables
 int AI = 0;
-int rounds = 0;
-int maxRound = 0;
+int maxLives = 0;
 int playerOneMoves = 0;
 int playerTwoMoves = 0;
-int playerOneWins = 0;
-int playerTwoWins = 0;
+int playerOneLives = 0;
+int playerTwoLives = 0;
 int draw = 0;
 int moves = 3;
 char key;
@@ -290,7 +290,7 @@ void check()
        (playerOneMoves == 7)&&(playerTwoMoves == 6))  // Gun Win Against Paper
     {
         printf("Player 1 Win");
-        playerOneWins = playerOneWins + 1;
+        playerTwoLives = playerTwoLives - 1;
     }
 
     // Player 2 Win
@@ -317,13 +317,13 @@ void check()
        (playerTwoMoves == 7)&&(playerOneMoves == 6))  // Gun Win Against Paper
     {
         printf("Player 2 Win");
-        playerTwoWins = playerTwoWins + 1;
+        playerOneLives = playerOneLives - 1;
     }
 }
 
 void roundDisplay()
 {
-    printf("Rounds: %d. Player 1 Wins: %d. Player 2 Wins: %d. Draw: %d\n", rounds, playerOneWins, playerTwoWins, draw);
+    printf("Player 1 Lives: %d. Player 2 Lives: %d. Draw: %d\n", playerOneLives, playerTwoLives, draw);
     if(moves == 3)
         printf("Q(Player1) Or U(Player2) is Rock,\nW(Player1) or I(Player2) is Paper,\nE(Player1) or O(Player2) is Scissors\n");
 	if(moves == 5)
@@ -389,9 +389,10 @@ void main() // Main Loop
 {
 	srand(time(NULL));
     printf("Welcome to Rock Paper Scissors with twist\n");
-    printf("Enter how many round:\n");
-    printf("Note: There no tie breaker so draw is possible\n");
-    scanf("%d", &maxRound);
+    printf("Enter how many lives each player gets: \n");
+    scanf("%d", &maxLives);
+    playerOneLives = maxLives;
+    playerTwoLives = maxLives;
     system("cls");
     printf("3 or 5 or 7 moves\n");
     printf("Moves: ");
@@ -403,7 +404,7 @@ void main() // Main Loop
     scanf("%d", &AI);
     system("cls");
 
-    while(maxRound > rounds)
+    while((playerOneLives != 0)&&(playerTwoLives != 0))
     {
         roundDisplay();
         playerKeyEvent();
@@ -412,17 +413,14 @@ void main() // Main Loop
         check();
         Sleep(3000);
         system("cls");
-        rounds = rounds + 1;
         playerOneMoves = 0;
     	playerTwoMoves = 0;
     }
 
-    if(playerOneWins > playerTwoWins)
-		printf("Player One Wins Game");
-	else if (playerTwoWins > playerOneWins)
+    if(playerOneLives = 0)
 		printf("Player Two Wins Game");
-	else
-		printf("Draw");
+	else if (playerTwoLives != 0)
+		printf("Player One Wins Game");
 
     getch();
 }
