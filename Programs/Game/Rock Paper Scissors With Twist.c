@@ -419,7 +419,7 @@ void main() // Main Loop
 
     if(playerOneLives = 0)
 		printf("Player Two Wins Game");
-	else if (playerTwoLives != 0)
+	else
 		printf("Player One Wins Game");
 
     getch();
