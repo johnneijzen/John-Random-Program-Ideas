@@ -1,55 +1,108 @@
+/*
+    @author:    John V. Neijzen
+    @activity:  1 - Narcissistic Numbers
+    @section:   CSA 12 A
+    @version:   0.1
+*/
+
+/*
+    Create a C program that asks for an integer from the user.
+    Use a function that will determine whether the integer given by the user is narcissistic or not.
+*/
+
 #include <stdio.h>
 
-int narcissisticNumbers(int x);
+int numPlaces (int n);
+int narcissisticNumbers(int userInput, int digit);
+int power(int rem, int digit);
 
 void main()
 {
     int userInput = 0; // Var we used to store use user input
+    int digit = 0; // Number of digits
     int isItNarcissisticNumber = 0; // Used store condition with function narcissisticNumbers
 
     do { // Loop do-while
-        printf("Enter number: "); // ask user number
-        scanf("%d", &userInput); // get user input
-        if(userInput != 0) // check if userInput is not 0
+        printf("\nNote: To Exit Program type 0 ");
+        printf("\nEnter number: ");
+        scanf("%d", &userInput);
+        if(userInput != 0)
         {
-            isItNarcissisticNumber = narcissisticNumbers(userInput); // Call function narcissisticNumbers and give userInput and wait for 1 or 0
-            if(isItNarcissisticNumber == 1) // if narcissisticNumbers return 1 then it is narcissistic Number
-                printf("%d is Narcissistic\n", userInput); // Print out that is narcissistic Number
+            digit = numPlaces(userInput);
+            isItNarcissisticNumber = narcissisticNumbers(userInput, digit);
+            if(isItNarcissisticNumber == 1)
+                printf("%d is Narcissistic\n", userInput);
             else
-                printf("%d is Not Narcissistic\n", userInput); // else this print out
+                printf("%d is Not Narcissistic\n", userInput);
         }
     } while(userInput != 0); // Loop ends till user type 0;
 }
 
-int narcissisticNumbers(int x)
-{
-    int i; // used as power of 3
-    int j=x;  // j is used to store x for later use
-    int sum = 0; // get total of power thing
+/*
+    Function: numPlaces
 
-    if(j > 100) // if greater than 100 than used this
-    {
-        while(j>0) // while greater than 0 loop
-        {
-            i=j%10; // get first dig then after loop is second digit then it 3 digit
-            sum=sum+(i*i*i); // add i by 3 times
-            j=j/10; // j divide by 10
-        }
-         if(x==sum) // if x == sum then it is Narcissistic Number
-            return 1; // return 1; for true
+    Used to check how many digits place there are so i can correct power by what
+    formula for Narcissistic.
+*/
+
+int numPlaces (int n) {
+    if (n < 10) return 1;
+    if (n < 100) return 2;
+    if (n < 1000) return 3;
+    if (n < 10000) return 4;
+    if (n < 100000) return 5;
+    if (n < 1000000) return 6;
+    if (n < 10000000) return 7;
+    if (n < 100000000) return 8;
+    if (n < 1000000000) return 9;
+}
+
+/*
+    Function: power
+
+    It ask for 2 thing number and how times you power it
+
+    like rem is 2 and digit is 3 then it be 2 * 2 * 2 = 8
+*/
+
+int power(int rem, int digit)
+{
+    int pow = 1;
+    int count = 1;
+    while(count <= digit){
+        pow = pow * rem;
+        count++;
     }
-    else if(j < 10) // else if j < 10 since 0,1,2,3,4,5,6,7,8,9 are still narcissistie Numbers but they are single digit
+    return pow;
+}
+
+/*
+    Function: narcissisticNumbers
+
+    Im using Complex formula for this
+    from userInput and digit place
+
+    i create temp variable to store userInput
+
+    then while temp != 0 then rem is temp%10 and using power function
+    power each digit since each time do %10 you get rem of it
+    after that temp/10 till temp 0 then compair to starting number than
+    if equal then it narcissisticNumbers else not.
+*/
+
+int narcissisticNumbers(int userInput, int digit)
+{
+    int temp = userInput;
+    int rem = 0;
+    int sum = 0;
+    while(temp!=0)
     {
-        while(j>0)// Loop while j > 0
-        {
-            sum=sum+(j); // Sum just do this 1 so that is 1^1 that is still 1 :p
-            j=j-j; // J = j - j so noting is left
-        }
-        if(x==sum) // if x == sum then it is Narcissistic Number
-            return 1; // return 1; for true
+        rem = temp%10;
+        sum = sum + power(rem,digit);
+        temp = temp/10;
     }
-    else // else false
-    {
-        return 0; // return 0; for False
-    }
+    if(sum == userInput)
+        return 1;
+    else
+        return 0;
 }
