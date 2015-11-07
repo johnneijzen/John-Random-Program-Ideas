@@ -25,18 +25,18 @@ int main()
 
     // Process/Output
     getNumberTill1000(userInput);
-    
+
     return 0;
 }
 
 /*
-    Function:  getNumberTill1000 
-    
+    Function:  getNumberTill1000
+
     Its used int a aka userInput as a base number then using if condition check
-    if userInput is less than 1000 then if it is less than 1000 then it 
-    print number it on then add 1 to variable a then it redo function  
+    if userInput is less than 1000 then if it is less than 1000 then it
+    print number it on then add 1 to variable a then it redo function
     aka recursion till it 1000 then function break goes back main loop
-    
+
     Note: Negative Number will work too.
 */
 
