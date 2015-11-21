@@ -37,7 +37,7 @@
 
 void Fibonacci(int count,int userInput,int userInput2,int first,int next,int second);
 
-int main()
+void main()
 {
 	int count = 1;
 	int first = 0;
