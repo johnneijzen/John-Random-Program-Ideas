@@ -198,6 +198,36 @@ void LHDS()
                 else
                     pattern = 7;
         }
+		
+		if(quadrant == 3)
+        {
+            if((row == 1)&&(col == 5)) //LHDS N9
+                if(displayGird[LHDS10R][LHDS10R] == 0)
+                    pattern = 2;
+                else if(displayGird[LHDS16R][LHDS16R] == 0)
+                    pattern = 5;
+                else
+                    pattern = 8;
+            else if((row == 2)&&(col == 7))//LHDS N10
+                if(displayGird[LHDS11R][LHDS11C] == 0)
+                    pattern = 1;
+				else if(displayGird[LHDS9R][LHDS9C] == 0)
+                    pattern = 4;
+                else
+                    pattern = 8;
+            else if((row == 4)&&(col == 8))//LHDS N11
+                if(displayGird[LHDS10R][LHDS10C] == 0)
+                    pattern = 3;
+                else
+                    pattern = 4;
+            else if((row == 3)&&(col == 6))//LHDS N12
+                if(displayGird[LHDS5R][LHDS5C] == 0)
+                    pattern = 3;
+                else if(displayGird[LHDS7R][LHDS7C] == 0)
+                    pattern = 2;
+                else
+                    pattern = 7;
+        }
         doMove(pattern);
         printf("%d and %d and %d", row,col,count);
         getch();
