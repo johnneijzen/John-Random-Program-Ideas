@@ -219,14 +219,14 @@ void LHDS()
                     pattern = 1;
                 else
                     pattern = 8;
-            // TO DO
-            /*else if((row == 6)&&(col == 3))//LHDS N16
-                if(displayGird[LHDS1R][LHDS1C] == 0)
+            //TO DO
+            else if((row == 6)&&(col == 3))//LHDS N16
+                if(displayGird[LHDS15R][LHDS15C] == 0)
                     pattern = 4;
-                else if(displayGird[LHDS3R][LHDS3C] == 0)
+                else if(displayGird[LHDS13R][LHDS13C] == 0)
                     pattern = 1;
                 else
-                    pattern = 6;*/ 
+                    pattern = 6;
         }
 
         if(quadrant == 4)
