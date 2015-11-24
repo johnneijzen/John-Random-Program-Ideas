@@ -56,8 +56,7 @@ void main()
 	printf("\nCol: ");
 	scanf("%d", &col);
 
-
-	displayGird[row - 1][col - 1] = count;
+    displayGird[row-1][col-1] = count;
 
 	while(count < 8 * 8)
 	{
@@ -132,11 +131,11 @@ void LHDS()
     {
         if((row <= 4)&&(col <= 4))
             quadrant = 1;
-        else if((row <= 4)&&(col > 5))
+        else if((row <= 4)&&(col >= 5))
             quadrant = 2;
-        else if((row > 5)&&(col <= 4))
+        else if((row >= 5)&&(col <= 4))
             quadrant = 3;
-        else if((row > 5)&&(col > 5))
+        else if((row >= 5)&&(col >= 5))
             quadrant = 4;
 
         if(quadrant == 1)
@@ -172,9 +171,9 @@ void LHDS()
         if(quadrant == 2)
         {
             if((row == 1)&&(col == 5)) //LHDS N5
-                if(displayGird[LHDS6R][LHDS6R] == 0)
+                if(displayGird[LHDS6R][LHDS6C] == 0)
                     pattern = 2;
-                else if(displayGird[LHDS8R][LHDS8R] == 0)
+                else if(displayGird[LHDS8R][LHDS8C] == 0)
                     pattern = 1;
                 else
                     pattern = 5;
@@ -198,38 +197,68 @@ void LHDS()
                 else
                     pattern = 7;
         }
-		
-		if(quadrant == 3)
+
+        if(quadrant == 3)
         {
-            if((row == 1)&&(col == 5)) //LHDS N9
-                if(displayGird[LHDS10R][LHDS10R] == 0)
+            if((row == 8)&&(col == 4)) //LHDS N13
+                if(displayGird[LHDS14R][LHDS14C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHDS16R][LHDS16C] == 0)
+                    pattern = 3;
+                else
+                    pattern = 6;
+            else if((row == 7)&&(col == 2))//LHDS N14
+                if(displayGird[LHDS15R][LHDS15C] == 0)
+                    pattern = 3;
+                else
                     pattern = 2;
-                else if(displayGird[LHDS16R][LHDS16R] == 0)
-                    pattern = 5;
+            else if((row == 5)&&(col == 1))//LHDS N15
+                if(displayGird[LHDS16R][LHDS16C] == 0)
+                    pattern = 2;
+                else if(displayGird[LHDS14R][LHDS14C] == 0)
+                    pattern = 1;
                 else
                     pattern = 8;
-            else if((row == 2)&&(col == 7))//LHDS N10
+            // TO DO
+            /*else if((row == 6)&&(col == 3))//LHDS N16
+                if(displayGird[LHDS1R][LHDS1C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHDS3R][LHDS3C] == 0)
+                    pattern = 1;
+                else
+                    pattern = 6;*/ 
+        }
+
+        if(quadrant == 4)
+        {
+            if((row == 5)&&(col == 5)) //LHDS N9
+                if(displayGird[LHDS10R][LHDS10C] == 0)
+                    pattern = 2;
+                else if(displayGird[LHDS12R][LHDS12C] == 0)
+                    pattern = 1;
+                else
+                    pattern = 5;
+            else if((row == 6)&&(col == 7))//LHDS N10
                 if(displayGird[LHDS11R][LHDS11C] == 0)
                     pattern = 1;
 				else if(displayGird[LHDS9R][LHDS9C] == 0)
                     pattern = 4;
                 else
                     pattern = 8;
-            else if((row == 4)&&(col == 8))//LHDS N11
+            else if((row == 8)&&(col == 8))//LHDS N11
                 if(displayGird[LHDS10R][LHDS10C] == 0)
                     pattern = 3;
                 else
                     pattern = 4;
-            else if((row == 3)&&(col == 6))//LHDS N12
-                if(displayGird[LHDS5R][LHDS5C] == 0)
-                    pattern = 3;
-                else if(displayGird[LHDS7R][LHDS7C] == 0)
+            else if((row == 7)&&(col == 6))//LHDS N12
+                if(displayGird[LHDS11R][LHDS11C] == 0)
                     pattern = 2;
+                else if(displayGird[LHDS9R][LHDS9C] == 0)
+                    pattern = 3;
                 else
-                    pattern = 7;
+                    pattern = 5;
         }
         doMove(pattern);
-        printf("%d and %d and %d", row,col,count);
         getch();
     }
 }
