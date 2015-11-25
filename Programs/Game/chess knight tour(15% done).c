@@ -197,10 +197,10 @@ void LHDS()
             }
             else if((row == 4)&&(col == 4))//LHDS N3
             {
-                if(displayGird[LHDS4R][LHDS4C] == 0)
+                if(displayGird[LHDS2R][LHDS2C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHDS4R][LHDS4C] == 0)
                     pattern = 3;
-                else if(displayGird[LHDS2R][LHDS2C] == 0)
-                    pattern = 7;
                 else if(displayGird[LHDS8R][LHDS8C] == 0)
                     pattern = 6;
                 else if(displayGird[LHDS16R][LHDS16C] == 0)
@@ -275,10 +275,10 @@ void LHDS()
             }
             else if((row == 5)&&(col == 1))//LHDS N15
             {
-                if(displayGird[LHDS16R][LHDS16C] == 0)
-                    pattern = 2;
-                else if(displayGird[LHDS14R][LHDS14C] == 0)
+                if(displayGird[LHDS14R][LHDS14C] == 0)
                     pattern = 1;
+                else if(displayGird[LHDS16R][LHDS16C] == 0)
+                    pattern = 2;
                 else if(displayGird[LHDS2R][LHDS2C] == 0)
                     pattern = 8;
             }
@@ -288,8 +288,11 @@ void LHDS()
                     pattern = 1;
                 else if(displayGird[LHDS15R][LHDS15C] == 0)
                     pattern = 4;
+                else if(displayGird[LHDS3R][LHDS3C] == 0)
+                    pattern = 8;
                 else if(displayGird[LHDS9R][LHDS9C] == 0)
                     pattern = 6;
+
             }
         }
         else if(quadrant == 4)
