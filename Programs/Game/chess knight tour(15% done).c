@@ -35,10 +35,44 @@
 #define LHDS16R 5
 #define LHDS16C 2
 
+//Left-Hand Square System
+#define LHSS1R 0
+#define LHSS1C 1
+#define LHSS2R 2
+#define LHSS2C 0
+#define LHSS3R 3
+#define LHSS3C 2
+#define LHSS4R 1
+#define LHSS4C 3
+#define LHSS5R 0
+#define LHSS5C 5
+#define LHSS6R 1
+#define LHSS6C 7
+#define LHSS7R 3
+#define LHSS7C 6
+#define LHSS8R 2
+#define LHSS8C 4
+#define LHSS9R 4
+#define LHSS9C 5
+#define LHSS10R 5
+#define LHSS10C 7
+#define LHSS11R 7
+#define LHSS11C 6
+#define LHSS12R 6
+#define LHSS12C 4
+#define LHSS13R 7
+#define LHSS13C 2
+#define LHSS14R 6
+#define LHSS14C 0
+#define LHSS15R 4
+#define LHSS15C 1
+#define LHSS16R 5
+#define LHSS16C 3
+
 //Right-Hand Square System
 #define RHSS1R 1
 #define RHSS1C 0
-#define RHSS2R 5
+#define RHSS2R 3
 #define RHSS2C 1
 #define RHSS3R 2
 #define RHSS3C 3
@@ -338,6 +372,7 @@ void LHDS()
         getch();
     }
     isLHDSDone = 1;
+    switcher();
 }
 
 void RHDS()
@@ -356,14 +391,182 @@ void RHDS()
 void LHSS()
 {
     int quadrant;
-    if((row <= 4)&&(col <= 4))
-        quadrant = 1;
-    else if((row <= 4)&&(col > 5))
-        quadrant = 2;
-    else if((row > 5)&&(col <= 4))
-        quadrant = 3;
-    else if((row > 5)&&(col > 5))
-        quadrant = 4;
+    int beforeCount = count;
+    int pattern = 0;
+
+    while(count != beforeCount + 15)
+    {
+        if((row <= 4)&&(col <= 4))
+            quadrant = 1;
+        else if((row <= 4)&&(col >= 5))
+            quadrant = 2;
+        else if((row >= 5)&&(col <= 4))
+            quadrant = 3;
+        else if((row >= 5)&&(col >= 5))
+            quadrant = 4;
+
+        if(quadrant == 1)
+        {
+            if((row == 1)&&(col == 2)) //LHSS N1
+            {
+                if(displayGird[LHSS2R][LHSS2C] == 0)
+                    pattern = 7;
+                else if(displayGird[LHSS4R][LHSS4C] == 0)
+                    pattern = 2;
+            }
+            else if((row == 3)&&(col == 1))//LHSS N2
+            {
+                if(displayGird[LHSS1R][LHSS1C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS3R][LHSS3C] == 0)
+                    pattern = 2;
+                else if(displayGird[LHSS15R][LHSS15C] == 0)
+                    pattern = 1;
+            }
+            else if((row == 4)&&(col == 3))//LHSS N3
+            {
+                if(displayGird[LHSS2R][LHSS2C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHSS4R][LHSS4C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS8R][LHSS8C] == 0)
+                    pattern = 6;
+                else if(displayGird[LHSS16R][LHSS16C] == 0)
+                    pattern = 1;
+            }
+            else if((row == 2)&&(col == 4))//LHSS N4
+            {
+                if(displayGird[LHSS1R][LHSS1C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHSS3R][LHSS3C] == 0)
+                    pattern = 7;
+                else if(displayGird[LHSS5R][LHSS5C] == 0)
+                    pattern = 6;
+            }
+        }
+        else if(quadrant == 2)
+        {
+            if((row == 1)&&(col == 6)) //LHSS N5
+            {
+                if(displayGird[LHSS6R][LHSS6C] == 0)
+                    pattern = 2;
+                else if(displayGird[LHSS8R][LHSS8C] == 0)
+                    pattern = 7;
+                else if(displayGird[LHSS4R][LHSS4C] == 0)
+                    pattern = 5;
+            }
+            else if((row == 2)&&(col == 8))//LHSS N6
+            {
+                if(displayGird[LHSS7R][LHSS7C] == 0)
+                    pattern = 7;
+                else if(displayGird[LHSS5R][LHSS5C] == 0)
+                    pattern = 4;
+            }
+            else if((row == 4)&&(col == 7))//LHSS N7
+            {
+                if(displayGird[LHSS6R][LHSS6C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS8R][LHSS8C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHSS10R][LHSS10C] == 0)
+                    pattern = 1;
+            }
+            else if((row == 3)&&(col == 5))//LHSS N8
+            {
+                if(displayGird[LHSS5R][LHSS5C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS7R][LHSS7C] == 0)
+                    pattern = 2;
+                else if(displayGird[LHSS9R][LHSS9C] == 0)
+                    pattern = 1;
+                else if(displayGird[LHSS3R][LHSS3C] == 0)
+                    pattern = 5;
+            }
+        }
+        else if(quadrant == 3)
+        {
+            if((row == 8)&&(col == 3)) //LHSS N13
+            {
+                if(displayGird[LHSS14R][LHSS14C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHSS16R][LHSS16C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS12R][LHSS12C] == 0)
+                    pattern = 6;
+            }
+            else if((row == 7)&&(col == 1))//LHSS N14
+            {
+                if(displayGird[LHSS15R][LHSS15C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS13R][LHSS13C] == 0)
+                    pattern = 2;
+            }
+            else if((row == 5)&&(col == 2))//LHSS N15
+            {
+                if(displayGird[LHSS14R][LHSS14C] == 0)
+                    pattern = 1;
+                else if(displayGird[LHSS16R][LHSS16C] == 0)
+                    pattern = 2;
+                else if(displayGird[LHSS2R][LHSS2C] == 0)
+                    pattern = 8;
+            }
+            else if((row == 6)&&(col == 3))//LHSS N16
+            {
+                if(displayGird[LHSS13R][LHSS13C] == 0)
+                    pattern = 1;
+                else if(displayGird[LHSS15R][LHSS15C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHSS3R][LHSS3C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS9R][LHSS9C] == 0)
+                    pattern = 6;
+
+            }
+        }
+        else if(quadrant == 4)
+        {
+            if((row == 5)&&(col == 6)) //LHSS N9
+            {
+                if(displayGird[LHSS10R][LHSS10C] == 0)
+                    pattern = 2;
+                else if(displayGird[LHSS12R][LHSS12C] == 0)
+                    pattern = 7;
+                else if(displayGird[LHSS16R][LHSS16C] == 0)
+                    pattern = 5;
+                else if(displayGird[LHSS8R][LHSS8C] == 0)
+                    pattern = 3;
+            }
+            else if((row == 6)&&(col == 8))//LHSS N10
+            {
+                if(displayGird[LHSS11R][LHSS11C] == 0)
+                    pattern = 7;
+				else if(displayGird[LHSS9R][LHSS9C] == 0)
+                    pattern = 4;
+                else if(displayGird[LHSS7R][LHSS7C] == 0)
+                    pattern = 3;
+            }
+            else if((row == 8)&&(col == 7))//LHSS N11
+            {
+                if(displayGird[LHSS10R][LHSS10C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS12R][LHSS12C] == 0)
+                    pattern = 4;
+            }
+            else if((row == 7)&&(col == 5))//LHSS N12
+            {
+                if(displayGird[LHSS11R][LHSS11C] == 0)
+                    pattern = 2;
+                else if(displayGird[LHSS9R][LHSS9C] == 0)
+                    pattern = 8;
+                else if(displayGird[LHSS13R][LHSS13C] == 0)
+                    pattern = 5;
+            }
+        }
+        doMove(pattern);
+        getch();
+    }
+    isLHSSDone = 1;
+    switcher();
 }
 
 void RHSS()
@@ -538,11 +741,12 @@ void RHSS()
             }
         }
 	}
+	isRHSSDone = 1;
+	switcher();
 }
 
 void switcher()
 {
-
 
 }
 
