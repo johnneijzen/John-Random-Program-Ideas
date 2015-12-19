@@ -1,8 +1,8 @@
 /*
     @author:    John V. Neijzen
-    @activity:  1 - Narcissistic Numbers
+    @activity:  Chess Knight Tour (4 Systems)
     @section:   CSA 12 A
-    @version:   0.10
+    @version:   0.12
     @Change-logs:
         0.01 - First Draft
         0.02 - Adding Pattern Move
@@ -16,6 +16,8 @@
         0.08 - adding switcher
         0.09 - Fixing Systems and fix some define code
         0.10 - Fully working not 100% tested
+        0.11 - More Bug Fixing and 100% Tested
+        0.12 - Improve Display
 */
 
 /*
@@ -125,7 +127,7 @@
 #define RHSS16R 4
 #define RHSS16C 2
 
-//Right-Hand Diamond System -TODO
+//Right-Hand Diamond System
 #define RHDS1R 3
 #define RHDS1C 0
 #define RHDS2R 1
@@ -179,11 +181,23 @@ void doMove(int pattern);
 
 void main()
 {
+    printf("This Program Will Solve Knight Tour");
 	printf("\nStarting Postion");
-	printf("\nRow: ");
-	scanf("%d", &row);
-	printf("\nCol: ");
-	scanf("%d", &col);
+	do
+    {
+        printf("\nRow(1-8): ");
+        scanf("%d", &row);
+        if(row<1||row>8)
+            printf("Invalid Try Aging");
+    }while(row<1||row>8);
+
+    do
+    {
+        printf("\nCol(1-8): ");
+        scanf("%d", &col);
+        if(col<1||col>8)
+            printf("Invalid Try Aging");
+    }while(col<1||col>8);
 
     row = row - 1;
     col = col - 1;
@@ -964,7 +978,7 @@ void switcher()
     {
         if(isRHSSDone == 0)
         {
-            if((row == LHDS3R)&&(col == LHDS3C))
+            if((row == LHDS4R)&&(col == LHDS4C))
                 pattern = 7;
             else if((row == LHDS8R)&&(col == LHDS8C))
                 pattern = 1;
@@ -973,7 +987,8 @@ void switcher()
             else if((row == LHDS16R)&&(col == LHDS16C))
                 pattern = 3;
         }
-        else if(isLHSSDone == 0)
+
+        if(isLHSSDone == 0)
         {
             if((row == LHDS3R)&&(col == LHDS3C))
                 pattern = 2;
@@ -995,11 +1010,12 @@ void switcher()
             else if((row == RHDS8R)&&(col == RHDS8C))
                 pattern = 4;
             else if((row == RHDS12R)&&(col == RHDS12C))
-                pattern = 2;
-            else if((row == RHDS16R)&&(col == RHDS16C))
                 pattern = 5;
+            else if((row == RHDS16R)&&(col == RHDS16C))
+                pattern = 2;
         }
-        else if(isLHSSDone == 0)
+
+        if(isLHSSDone == 0)
         {
             if((row == RHDS3R)&&(col == RHDS3C))
                 pattern = 1;
@@ -1024,8 +1040,10 @@ void switcher()
                 pattern = 4;
             else if((row == LHSS15R)&&(col == LHSS15C))
                 pattern = 6;
+
         }
-        else if(isRHDSDone == 0)
+
+        if(isRHDSDone == 0)
         {
             if((row == LHSS4R)&&(col == LHSS4C))
                 pattern = 1;
@@ -1051,7 +1069,8 @@ void switcher()
             else if((row == RHSS12R)&&(col == RHSS12C))
                 pattern = 8;
         }
-        else if(isRHDSDone == 0)
+
+        if(isRHDSDone == 0)
         {
             if((row == RHSS3R)&&(col == RHSS3C))
                 pattern = 6;
