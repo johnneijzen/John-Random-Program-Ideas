@@ -2,15 +2,15 @@
     @author:    John V. Neijzen
     @activity:  Chess Knight Tour (Brute Force)
     @section:   CSA 12 A
-    @version:   0.1
+    @version:   0.2
     @Change-logs:
         0.01 - First Draft
+        0.02 - Increase Speed.
 */
 
 #include <stdio.h>      /* printf, scanf, puts, NULL */
 #include <stdlib.h>     /* srand, rand */
 #include <time.h>       /* time */
-#include <conio.h>
 
 int displayGird[8][8] = {0};
 int count = 1;
@@ -41,17 +41,17 @@ void main()
     col = userCol - 1;
 
     displayGird[row][col] = count;
+    display();
 
     while(count < 64)
 	{
-		display();
 		checkMove();
 	}
 }
 
 void forceReset()
 {
-    trial = trial + 1;
+    display();
     int i = 0,j = 0;
     for(i = 0; i < 8; i++)
     {
@@ -63,6 +63,7 @@ void forceReset()
     row = userRow - 1;
     col = userCol - 1;
     count = 1;
+    trial = trial + 1;
     displayGird[row][col]=count;
 }
 
@@ -113,7 +114,8 @@ void checkMove()
 
     if((pattern1 == 0)&&(pattern2 == 0)&&(pattern3 == 0)&&(pattern4 == 0)&&(pattern5 == 0)&&(pattern6 == 0)&&(pattern7 == 0)&&(pattern8 == 0))
     {
-        forceReset();
+        if(count < 64)
+            forceReset();
     }else{
         pickMove(pattern1, pattern2, pattern3, pattern4, pattern5, pattern6, pattern7, pattern8);
     }
@@ -131,7 +133,6 @@ void pickMove(int pattern1, int pattern2, int pattern3, int pattern4, int patter
         col = col + 1;
         count++;
         displayGird[row][col] = count;
-        display();
         donePick = 1;
     }
     if((pattern2 == 1)&&(random == 2))
@@ -140,7 +141,6 @@ void pickMove(int pattern1, int pattern2, int pattern3, int pattern4, int patter
         col = col + 2;
         count++;
         displayGird[row][col] = count;
-        display();
         donePick = 1;
     }
     if((pattern3 == 1)&&(random == 3))
@@ -149,7 +149,6 @@ void pickMove(int pattern1, int pattern2, int pattern3, int pattern4, int patter
         col = col - 1;
         count++;
         displayGird[row][col] = count;
-        display();
         donePick = 1;
     }
     if((pattern4 == 1)&&(random == 4))
@@ -158,7 +157,6 @@ void pickMove(int pattern1, int pattern2, int pattern3, int pattern4, int patter
         col = col - 2;
         count++;
         displayGird[row][col] = count;
-        display();
         donePick = 1;
     }
     if((pattern5 == 1)&&(random == 5))
@@ -167,7 +165,6 @@ void pickMove(int pattern1, int pattern2, int pattern3, int pattern4, int patter
         col = col - 2;
         count++;
         displayGird[row][col] = count;
-        display();
         donePick = 1;
     }
     if((pattern6 == 1)&&(random == 6))
@@ -176,7 +173,6 @@ void pickMove(int pattern1, int pattern2, int pattern3, int pattern4, int patter
         col = col + 2;
         count++;
         displayGird[row][col] = count;
-        display();
         donePick = 1;
     }
     if((pattern7 == 1)&&(random == 7))
@@ -185,7 +181,6 @@ void pickMove(int pattern1, int pattern2, int pattern3, int pattern4, int patter
         col = col - 1;
         count++;
         displayGird[row][col] = count;
-        display();
         donePick = 1;
     }
     if((pattern8 == 1)&&(random == 8))
@@ -194,7 +189,6 @@ void pickMove(int pattern1, int pattern2, int pattern3, int pattern4, int patter
         col = col + 1;
         count++;
         displayGird[row][col] = count;
-        display();
         donePick = 1;
     }
     if(donePick == 0)
@@ -225,5 +219,5 @@ void display()
 		}
 		printf("\n");
 	}
-	printf("Trial:%d\n", trial);
+	printf("Trial:%d and Count:%d\n", trial,count);
 }
