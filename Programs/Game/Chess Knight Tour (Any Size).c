@@ -18,7 +18,7 @@
 
 #include <stdio.h>
 
-#define N 10 // Change This Depending on board size you want.
+#define N 8 // Change This Depending on board size you want.
 
 int displayGird[N][N] = {0};
 int count = 1;
