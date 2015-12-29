@@ -2,7 +2,7 @@
     @author:    John V. Neijzen
     @activity:  Chess Knight Tour (Any Size)
     @section:   CSA 12 A
-    @version:   0.7
+    @version:   0.8
     @Change-logs:
         0.01 - First Draft
         0.02 - 3 Days of Debugging
@@ -11,6 +11,7 @@
         0.05 - Fig-out what is wrong
         0.06 - Tested on some sizes
         0.07 - Improve Display Bit.
+        0.08 - Increase Speed By Change Display() to run only at Start and at end.
 */
 
 /*
