@@ -2,7 +2,7 @@
     @author:    John V. Neijzen
     @activity:  Chess Knight Tour (Any Size)
     @section:   CSA 12 A
-    @version:   0.8
+    @version:   0.9
     @Change-logs:
         0.01 - First Draft
         0.02 - 3 Days of Debugging
@@ -20,7 +20,7 @@
 
 #include <stdio.h>
 
-#define N 35 // Change This Depending on board size you want.
+#define N 8 // Change This Depending on board size you want.
 
 int displayGird[N][N] = {0};
 int count = 1;
@@ -58,7 +58,7 @@ void main()
     displayGird[row][col] = count;
     display();
 
-    while(count <= N*N)
+    while(count < N*N)
 	{
 		count++;
 		solve();
