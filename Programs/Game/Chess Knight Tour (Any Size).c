@@ -2,7 +2,7 @@
     @author:    John V. Neijzen
     @activity:  Chess Knight Tour (Any Size)
     @section:   CSA 12 A
-    @version:   0.6
+    @version:   0.7
     @Change-logs:
         0.01 - First Draft
         0.02 - 3 Days of Debugging
@@ -10,6 +10,7 @@
         0.04 - Check Net for fix
         0.05 - Fig-out what is wrong
         0.06 - Tested on some sizes
+        0.07 - Fixed Big Problem With My Code
 */
 
 /*
@@ -55,7 +56,7 @@ void main()
 
     displayGird[row][col] = count;
 
-    while(count <= N*N)
+    while(count < N*N)
 	{
 		display();
 		count++;
