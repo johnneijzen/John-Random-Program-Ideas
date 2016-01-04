@@ -12,6 +12,7 @@
         0.06 - Tested on some sizes
         0.07 - Improve Display Bit.
         0.08 - Increase Speed By Change Display() to run only at Start and at end.
+        0.09 - Fix Big Problem With My Code
 */
 
 /*
