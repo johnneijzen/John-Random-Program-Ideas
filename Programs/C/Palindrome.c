@@ -18,7 +18,7 @@
 
 int main ()
 {
-    char word[100];
+    char word[500];
     int length = 0;
     int i;
     int error = 0;
