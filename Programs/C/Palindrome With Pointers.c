@@ -24,7 +24,7 @@ int main ()
     int ctr;
     int error = 0;
 
-    userInput = malloc(sizeof(char));
+    userInput = malloc(sizeof(char *));
     printf("Enter a word or string:");
     scanf("%[^\n]s", userInput);
 
