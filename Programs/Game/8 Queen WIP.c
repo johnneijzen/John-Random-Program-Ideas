@@ -18,18 +18,20 @@
 #define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 int displayGird[N][N] = {0};
+
 struct QueenStack{
   int posRow;
   int posCol;
   struct QueenStack* next;
 };
+
 struct QueenStack* head; // DONT MONIFILY
 
 void display();
 void solve(int firstQueenRow, int FirstQueenCol); //TODO
 void push(int posRow, int posCol); //TODO
 void printStack();
-int checker();
+int checker(int row, int col, int nQueens);
 
 
 void main()
@@ -43,25 +45,30 @@ void main()
     scanf("%d", &col);
     row = row - 1;
     col = col - 1;
-
+    push(row, col);
     displayGird[row][col] = 'Q';
-    solve(row,col);
-
     display();
+    solve(row,col);
 }
 
 void solve(int firstQueenRow, int FirstQueenCol)
 {
-    printf("test");
-    push(1,1);
-    printf("test1");
-    push(2,3);
-    printf("test2");
-    push(5,7);
-    printStack();
+    int checked = 0, nQueens = 1;
+    int ctr,ctr1;
+
+    while(nQueen < N)
+    {
+        for(ctr = 0;ctr < N;ctr++)
+        {
+            for(ctr1 = 0;ctr1 < N;ctr1++)
+            {
+                
+            }
+        }
+    }
 }
 
-void push(int posRow, int posCol) // This will always add to end
+void push(int posRow, int posCol) // This will always add at end
 {
     struct QueenStack *newNode,*temp;
 
@@ -70,8 +77,9 @@ void push(int posRow, int posCol) // This will always add to end
     newNode->posCol = posCol;
     newNode->next = NULL;
 
-    if(head->next == NULL)
+    if(head == NULL)
     {
+        newNode->next = head;
         head=newNode;
     }
     else
@@ -92,13 +100,12 @@ void printStack() // This is just temp it be remove later on
     temp = head; // Because NEVER CHANGE YOU HEAD only when doing first step.
     while (temp != NULL)
     {
-        printf("%d\n", temp->posRow);
-        printf("%d\n", temp->posCol);
+        printf("row = %d, col = %d \n", temp->posRow, temp->posCol);
         temp = temp->next;
     }
 }
 
-int checker() //TODO
+int checker(int row, int col, int nQueens)
 {
     /*
         There are 3 ways queen can atk
@@ -109,35 +116,37 @@ int checker() //TODO
         for col: C of queen 1 == C of queen 2
         and diagonal: |R1-R2| == |C1-C2|
     */
-
-    int row,col,diagonal,ctr,ctr1; //TODO
-    //x = QueenPos->posRow
-    //y = QueenPos->posCol
+    struct QueenStack *temp;
+    temp = head;
+    int diagonal,ctr,ctr1;
 
     // Check Row and CoL
     for(ctr=0;ctr<N;ctr++)
     {
-        if((displayGird[row][ctr]='Q')||(displayGird[ctr][col]='Q'))
-           return 0;
+        if((displayGird[row][ctr]=='Q')||(displayGird[ctr][col]=='Q'))
+        {
+            printf("Row OR Col Error\n");
+            return 0;
+        }
     }
 
     // Check diagonal
-    diagonal = MIN(row,col)-1;
-    // Top Left To Bottom Right
-    for(ctr = row - diagonal, ctr1 = col - diagonal; ctr <= N && ctr1 <= N; ctr++, ctr1++)
+    for(ctr = 0; ctr < nQueens; ctr++)
     {
-        if(displayGird[ctr][ctr1]=='Q')
+        int row2,col2;
+        row2 = temp->posRow;
+        col2 = temp->posCol;
+        temp = temp->next;
+
+        if(abs(row - row2)==abs(col - col2))
+        {
+            printf("Diagonal Error\n");
             return 0;
+        }
     }
-    // Top Right To Bottom Left
-    for(ctr = row - diagonal, ctr1 = col + diagonal; ctr <= N && ctr1 <= N; ctr++, ctr1++)
-    {
-        if(displayGird[ctr][ctr1]=='Q')
-            return 0;
-    }
+
+    return 1;
 }
-
-
 
 void display()
 {
