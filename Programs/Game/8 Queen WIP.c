@@ -2,11 +2,12 @@
     @author:    John V. Neijzen
     @activity:  Queen (8 x 8)
     @section:   CSA 12 A
-    @version:   0.3
+    @version:   0.4
     @Change-logs:
         0.1 - First Draft
         0.2 - added Checker Function
         0.3 - adding Struct function like push
+        0.4 - Fixed some bugs
 */
 
 /*
@@ -15,7 +16,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define N 8 // Change This Depending on board size you want.
-#define MIN(x, y) (((x) < (y)) ? (x) : (y))
 
 int displayGird[N][N] = {0};
 
@@ -29,7 +29,8 @@ struct QueenStack* head; // DONT MONIFILY
 
 void display();
 void solve(int firstQueenRow, int FirstQueenCol); //TODO
-void push(int posRow, int posCol); //TODO
+void push(int posRow, int posCol);
+void pop();
 void printStack();
 int checker(int row, int col, int nQueens);
 
@@ -54,17 +55,44 @@ void main()
 void solve(int firstQueenRow, int FirstQueenCol)
 {
     int checked = 0, nQueens = 1;
-    int ctr,ctr1;
+    int row,col,ctr;
+    int row1 = 0, col1 = 0;
+    
+    struct QueenStack *temp;
+    temp = head;
 
-    while(nQueen < N)
+    while(nQueens < N)
     {
-        for(ctr = 0;ctr < N;ctr++)
+        for(row = row1;row < N;row++)
         {
-            for(ctr1 = 0;ctr1 < N;ctr1++)
+            for(col = col1;col < N;col++)
             {
-                
+            	printf("ha: %d, %d\n", row,col);
+				checked = checker(row,col,nQueens);
+				if(checked == 1)
+				{
+					push(row,col);
+					displayGird[row][col]='Q';
+					printf("\n");
+					display();
+					nQueens++;
+					break;
+				}
             }
         }
+        if(checked == 0)
+        {
+        	printf("%d, %d", row,col);
+        	for(ctr = 1; ctr < nQueens; ctr++)
+    		{
+    			temp = temp->next;
+    		}
+    		row1 = temp->posRow;
+    		col1 = temp->posCol;
+    		printf("WTF: %d, %d", row,col);
+    		displayGird[row1][col1]=0;
+			pop();
+		}
     }
 }
 
@@ -91,13 +119,26 @@ void push(int posRow, int posCol) // This will always add at end
         }
         temp->next = newNode;
     }
+}
 
+void pop()
+{
+	struct QueenStack *temp,*temp2;
+	temp = head;
+	
+	while(temp->next != NULL)
+  	{
+  		temp2 = temp;
+    	temp=temp->next;
+ 	}
+ 	temp2->next = temp->next;
+    free(temp);
 }
 
 void printStack() // This is just temp it be remove later on
 {
     struct QueenStack *temp;
-    temp = head; // Because NEVER CHANGE YOU HEAD only when doing first step.
+    temp = head;
     while (temp != NULL)
     {
         printf("row = %d, col = %d \n", temp->posRow, temp->posCol);
@@ -125,7 +166,6 @@ int checker(int row, int col, int nQueens)
     {
         if((displayGird[row][ctr]=='Q')||(displayGird[ctr][col]=='Q'))
         {
-            printf("Row OR Col Error\n");
             return 0;
         }
     }
@@ -140,7 +180,6 @@ int checker(int row, int col, int nQueens)
 
         if(abs(row - row2)==abs(col - col2))
         {
-            printf("Diagonal Error\n");
             return 0;
         }
     }
