@@ -8,7 +8,7 @@
         0.2 - added Checker Function
         0.3 - adding Struct function like push
         0.4 - Fixed some bugs
-        0.5 - Fixing more Bugs
+        0.5 - Done
 */
 
 /*
@@ -38,9 +38,8 @@ int checker(int row, int col, int nQueens);
 
 void main()
 {
-    int row, col;
+    int row = 0, col=0;
     head = NULL;
-
     printf("Input First Queen Row(1-%d): ", N);
     scanf("%d", &row);
     printf("Input First Queen Col(1-%d): ", N);
@@ -58,45 +57,53 @@ void solve(int firstQueenRow, int FirstQueenCol)
     int checked = 0, nQueens = 1;
     int row = 0,col = 0;
     int row1 = 0, col1 = 0;
+    int counter = 0;
 
     struct QueenStack *temp;
-    temp = head;
 
     while(nQueens < N)
     {
+
         for(col=col1;col<N;col++)
         {
             if(firstQueenRow == row)
+            {
                 row++;
+            }
             checked = checker(row,col,nQueens);
             if(checked == 1)
             {
-                printf("row = %d, col = %d\n",row,col);
                 push(row,col);
                 displayGird[row][col]='Q';
                 printf("\n");
                 display();
                 nQueens = nQueens + 1;
                 row++;
+                col1 = 0;
                 break;
             }
         }
 
         if(checked == 0)
         {
-            printf("row = %d, col = %d\n",row,col);
+            temp = head;
         	while(temp->next != NULL)
     		{
     			temp = temp->next;
     		}
     		row1 = temp->posRow;
     		col1 = temp->posCol;
+    		if((row1 == firstQueenRow)||(col1==FirstQueenCol))
+            {
+                printf("No Solutions");
+                return 0;
+            }
     		displayGird[row1][col1]=0;
     		printf("\n");
     		display();
 			pop();
 			col1++;
-			printf("row1 = %d, col1 = %d\n",row1,col1);
+			row=row1;
 			nQueens--;
 		}
     }
