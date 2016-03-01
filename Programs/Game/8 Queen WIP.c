@@ -2,12 +2,13 @@
     @author:    John V. Neijzen
     @activity:  Queen (8 x 8)
     @section:   CSA 12 A
-    @version:   0.4
+    @version:   0.5
     @Change-logs:
         0.1 - First Draft
         0.2 - added Checker Function
         0.3 - adding Struct function like push
         0.4 - Fixed some bugs
+        0.5 - Fixing more Bugs
 */
 
 /*
@@ -55,43 +56,48 @@ void main()
 void solve(int firstQueenRow, int FirstQueenCol)
 {
     int checked = 0, nQueens = 1;
-    int row,col,ctr;
+    int row = 0,col = 0;
     int row1 = 0, col1 = 0;
-    
+
     struct QueenStack *temp;
     temp = head;
 
     while(nQueens < N)
     {
-        for(row = row1;row < N;row++)
+        for(col=col1;col<N;col++)
         {
-            for(col = col1;col < N;col++)
+            if(firstQueenRow == row)
+                row++;
+            checked = checker(row,col,nQueens);
+            if(checked == 1)
             {
-            	printf("ha: %d, %d\n", row,col);
-				checked = checker(row,col,nQueens);
-				if(checked == 1)
-				{
-					push(row,col);
-					displayGird[row][col]='Q';
-					printf("\n");
-					display();
-					nQueens++;
-					break;
-				}
+                printf("row = %d, col = %d\n",row,col);
+                push(row,col);
+                displayGird[row][col]='Q';
+                printf("\n");
+                display();
+                nQueens = nQueens + 1;
+                row++;
+                break;
             }
         }
+
         if(checked == 0)
         {
-        	printf("%d, %d", row,col);
-        	for(ctr = 1; ctr < nQueens; ctr++)
+            printf("row = %d, col = %d\n",row,col);
+        	while(temp->next != NULL)
     		{
     			temp = temp->next;
     		}
     		row1 = temp->posRow;
     		col1 = temp->posCol;
-    		printf("WTF: %d, %d", row,col);
     		displayGird[row1][col1]=0;
+    		printf("\n");
+    		display();
 			pop();
+			col1++;
+			printf("row1 = %d, col1 = %d\n",row1,col1);
+			nQueens--;
 		}
     }
 }
@@ -125,7 +131,7 @@ void pop()
 {
 	struct QueenStack *temp,*temp2;
 	temp = head;
-	
+
 	while(temp->next != NULL)
   	{
   		temp2 = temp;
@@ -171,13 +177,12 @@ int checker(int row, int col, int nQueens)
     }
 
     // Check diagonal
-    for(ctr = 0; ctr < nQueens; ctr++)
+    for(ctr = 0;ctr < nQueens; ctr++)
     {
         int row2,col2;
         row2 = temp->posRow;
         col2 = temp->posCol;
         temp = temp->next;
-
         if(abs(row - row2)==abs(col - col2))
         {
             return 0;
