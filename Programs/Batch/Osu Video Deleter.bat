@@ -8,6 +8,7 @@ IF %check%==y (
 	del /s *.avi
 	del /s *.flv
 	del /s *.wmv
+	del /s *.mp4
 ) ELSE (
 	echo Restart program
 	pause
