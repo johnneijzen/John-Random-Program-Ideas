@@ -25,28 +25,36 @@ SOFTWARE.
 import java.util.Scanner;
 
 public class IOS {
-	private int userInput;
+	private String userInput;
 	
 	public IOS() {
-		this.userInput = 0;
+		this.userInput = "";
+	}
+	
+	public IOS(String n) {
+		this.userInput = n;
 	}
 	
 	public IOS(int n) {
-		this.userInput = n;
+		this.userInput = Integer.toString(n);
 	}
 	
 	public void setUserInput() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Enter Input");
-		this.userInput = scan.nextInt();
+		this.userInput = scan.nextLine();
 		scan.close();
 	}
 	
-	public void setUserInput(int n) {
+	public void setUserInput(String n) {
 		this.userInput = n;
 	}
 	
-	public int getUserInput() {
+	public void setUserInput(int n) {
+		this.userInput = Integer.toString(n);
+	}
+	
+	public String getUserInput() {
 		return this.userInput;
 	}
 	

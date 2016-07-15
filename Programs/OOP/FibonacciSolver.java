@@ -36,6 +36,11 @@ public class FibonacciSolver {
 		this.FiboSeries = "";
 	}
 	
+	public void SetN(String n)
+	{
+		this.N = Integer.parseInt(n);
+	}
+	
 	public void SetN(int n) {
 		this.N = n;
 	}
