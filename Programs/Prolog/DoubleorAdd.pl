@@ -51,12 +51,12 @@ even(N) :-
 	Info:
 	Sorry i did not make user friendly since i cant really write much using prolog. 
     also i hate prolog since it has no dyamic memory so you have to declare variable for
-    each operation.
+    each operation and it also lose it info after statemate or operation is done.
     
-    also 
+    P.S.
     since array are really hard to make make in prolog solution is written from buttom to top
-    unlike my c and java version and also since rule i cant write statement that will display
-    200 on top on solution.
+    unlike my c and java version and also since are rules i cant write statement that will 
+    display 200 on top on solution.
    	
 */
 
