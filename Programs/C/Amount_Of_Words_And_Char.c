@@ -103,8 +103,7 @@ void main() {
     printf("Hello Welcome To My Program");
     printf("\nThis Program will accept input and will display amount of character and words");
     printf("\nInput: ");
-
-
+    
     /*
         Get User Input
 
