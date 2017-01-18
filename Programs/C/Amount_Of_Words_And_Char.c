@@ -32,8 +32,10 @@
 /**
     @author:    John V. Neijzen
     @section:   CSB 22.1 B
-    @version:   0.1
+    @version:   0.2
     @purpose: Program get input then output amount of words and characters
+    @changeLogs: 0.1
+                 0.2 - Add return 0;
 */
 
 /**
@@ -131,4 +133,5 @@ void main() {
 
     /* Free Pointer */
     free(userInput); // is not needed but just for good habit
+    return 0;
 }
