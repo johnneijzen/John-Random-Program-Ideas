@@ -101,26 +101,18 @@ def p_number(p):
 def p_error(p):
     print("Syntax error in input!")
 
-import yacc;
+import yacc
 
 Filename = input("Enter Filename Note Add .txt to end: ")
-F = open(Filename,"r")
+F = open(Filename, "r")
 count = int(F.readline())
 
-for i in range(0,count):
+for i in range(0, count):
     data = F.readline()
     parser = yacc.yacc()
-    parser.parse(data,lexer)
+    parser.parse(data, lexer)
     output = parser.state
     if output == 5:
         print(data + " = True")
     else:
         print(data + " = False")
-
-
-
-
-
-
-
-

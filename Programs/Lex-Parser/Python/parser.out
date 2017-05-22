@@ -4,11 +4,11 @@ Grammar
 
 Rule 0     S' -> assign
 Rule 1     assign -> ID EQUALS expr
-Rule 2     expr -> expr PLUS term
-Rule 3     expr -> expr MINUS term
+Rule 2     expr -> expr ADD term
+Rule 3     expr -> expr SUB term
 Rule 4     expr -> term
-Rule 5     term -> term TIMES factor
-Rule 6     term -> term DIVIDE factor
+Rule 5     term -> term MUL factor
+Rule 6     term -> term DIV factor
 Rule 7     term -> factor
 Rule 8     factor -> LPAREN expr RPAREN
 Rule 9     factor -> ID
@@ -18,15 +18,15 @@ Rule 12    number -> DIGIT
 
 Terminals, with rules where they appear
 
+ADD                  : 2
 DIGIT                : 11 12
-DIVIDE               : 6
+DIV                  : 6
 EQUALS               : 1
 ID                   : 1 9
 LPAREN               : 8
-MINUS                : 3
-PLUS                 : 2
+MUL                  : 5
 RPAREN               : 8
-TIMES                : 5
+SUB                  : 3
 error                : 
 
 Nonterminals, with rules where they appear
@@ -64,11 +64,11 @@ state 2
 state 3
 
     (1) assign -> ID EQUALS . expr
-    (2) expr -> . expr PLUS term
-    (3) expr -> . expr MINUS term
+    (2) expr -> . expr ADD term
+    (3) expr -> . expr SUB term
     (4) expr -> . term
-    (5) term -> . term TIMES factor
-    (6) term -> . term DIVIDE factor
+    (5) term -> . term MUL factor
+    (6) term -> . term DIV factor
     (7) term -> . factor
     (8) factor -> . LPAREN expr RPAREN
     (9) factor -> . ID
@@ -89,10 +89,10 @@ state 4
 
     (9) factor -> ID .
 
-    TIMES           reduce using rule 9 (factor -> ID .)
-    DIVIDE          reduce using rule 9 (factor -> ID .)
-    PLUS            reduce using rule 9 (factor -> ID .)
-    MINUS           reduce using rule 9 (factor -> ID .)
+    MUL             reduce using rule 9 (factor -> ID .)
+    DIV             reduce using rule 9 (factor -> ID .)
+    ADD             reduce using rule 9 (factor -> ID .)
+    SUB             reduce using rule 9 (factor -> ID .)
     $end            reduce using rule 9 (factor -> ID .)
     RPAREN          reduce using rule 9 (factor -> ID .)
 
@@ -100,36 +100,36 @@ state 4
 state 5
 
     (1) assign -> ID EQUALS expr .
-    (2) expr -> expr . PLUS term
-    (3) expr -> expr . MINUS term
+    (2) expr -> expr . ADD term
+    (3) expr -> expr . SUB term
 
     $end            reduce using rule 1 (assign -> ID EQUALS expr .)
-    PLUS            shift and go to state 11
-    MINUS           shift and go to state 12
+    ADD             shift and go to state 11
+    SUB             shift and go to state 12
 
 
 state 6
 
     (4) expr -> term .
-    (5) term -> term . TIMES factor
-    (6) term -> term . DIVIDE factor
+    (5) term -> term . MUL factor
+    (6) term -> term . DIV factor
 
-    PLUS            reduce using rule 4 (expr -> term .)
-    MINUS           reduce using rule 4 (expr -> term .)
+    ADD             reduce using rule 4 (expr -> term .)
+    SUB             reduce using rule 4 (expr -> term .)
     $end            reduce using rule 4 (expr -> term .)
     RPAREN          reduce using rule 4 (expr -> term .)
-    TIMES           shift and go to state 13
-    DIVIDE          shift and go to state 14
+    MUL             shift and go to state 13
+    DIV             shift and go to state 14
 
 
 state 7
 
     (7) term -> factor .
 
-    TIMES           reduce using rule 7 (term -> factor .)
-    DIVIDE          reduce using rule 7 (term -> factor .)
-    PLUS            reduce using rule 7 (term -> factor .)
-    MINUS           reduce using rule 7 (term -> factor .)
+    MUL             reduce using rule 7 (term -> factor .)
+    DIV             reduce using rule 7 (term -> factor .)
+    ADD             reduce using rule 7 (term -> factor .)
+    SUB             reduce using rule 7 (term -> factor .)
     $end            reduce using rule 7 (term -> factor .)
     RPAREN          reduce using rule 7 (term -> factor .)
 
@@ -137,11 +137,11 @@ state 7
 state 8
 
     (8) factor -> LPAREN . expr RPAREN
-    (2) expr -> . expr PLUS term
-    (3) expr -> . expr MINUS term
+    (2) expr -> . expr ADD term
+    (3) expr -> . expr SUB term
     (4) expr -> . term
-    (5) term -> . term TIMES factor
-    (6) term -> . term DIVIDE factor
+    (5) term -> . term MUL factor
+    (6) term -> . term DIV factor
     (7) term -> . factor
     (8) factor -> . LPAREN expr RPAREN
     (9) factor -> . ID
@@ -163,10 +163,10 @@ state 9
     (10) factor -> number .
     (11) number -> number . DIGIT
 
-    TIMES           reduce using rule 10 (factor -> number .)
-    DIVIDE          reduce using rule 10 (factor -> number .)
-    PLUS            reduce using rule 10 (factor -> number .)
-    MINUS           reduce using rule 10 (factor -> number .)
+    MUL             reduce using rule 10 (factor -> number .)
+    DIV             reduce using rule 10 (factor -> number .)
+    ADD             reduce using rule 10 (factor -> number .)
+    SUB             reduce using rule 10 (factor -> number .)
     $end            reduce using rule 10 (factor -> number .)
     RPAREN          reduce using rule 10 (factor -> number .)
     DIGIT           shift and go to state 16
@@ -177,19 +177,19 @@ state 10
     (12) number -> DIGIT .
 
     DIGIT           reduce using rule 12 (number -> DIGIT .)
-    TIMES           reduce using rule 12 (number -> DIGIT .)
-    DIVIDE          reduce using rule 12 (number -> DIGIT .)
-    PLUS            reduce using rule 12 (number -> DIGIT .)
-    MINUS           reduce using rule 12 (number -> DIGIT .)
+    MUL             reduce using rule 12 (number -> DIGIT .)
+    DIV             reduce using rule 12 (number -> DIGIT .)
+    ADD             reduce using rule 12 (number -> DIGIT .)
+    SUB             reduce using rule 12 (number -> DIGIT .)
     $end            reduce using rule 12 (number -> DIGIT .)
     RPAREN          reduce using rule 12 (number -> DIGIT .)
 
 
 state 11
 
-    (2) expr -> expr PLUS . term
-    (5) term -> . term TIMES factor
-    (6) term -> . term DIVIDE factor
+    (2) expr -> expr ADD . term
+    (5) term -> . term MUL factor
+    (6) term -> . term DIV factor
     (7) term -> . factor
     (8) factor -> . LPAREN expr RPAREN
     (9) factor -> . ID
@@ -207,9 +207,9 @@ state 11
 
 state 12
 
-    (3) expr -> expr MINUS . term
-    (5) term -> . term TIMES factor
-    (6) term -> . term DIVIDE factor
+    (3) expr -> expr SUB . term
+    (5) term -> . term MUL factor
+    (6) term -> . term DIV factor
     (7) term -> . factor
     (8) factor -> . LPAREN expr RPAREN
     (9) factor -> . ID
@@ -227,7 +227,7 @@ state 12
 
 state 13
 
-    (5) term -> term TIMES . factor
+    (5) term -> term MUL . factor
     (8) factor -> . LPAREN expr RPAREN
     (9) factor -> . ID
     (10) factor -> . number
@@ -243,7 +243,7 @@ state 13
 
 state 14
 
-    (6) term -> term DIVIDE . factor
+    (6) term -> term DIV . factor
     (8) factor -> . LPAREN expr RPAREN
     (9) factor -> . ID
     (10) factor -> . number
@@ -260,12 +260,12 @@ state 14
 state 15
 
     (8) factor -> LPAREN expr . RPAREN
-    (2) expr -> expr . PLUS term
-    (3) expr -> expr . MINUS term
+    (2) expr -> expr . ADD term
+    (3) expr -> expr . SUB term
 
     RPAREN          shift and go to state 21
-    PLUS            shift and go to state 11
-    MINUS           shift and go to state 12
+    ADD             shift and go to state 11
+    SUB             shift and go to state 12
 
 
 state 16
@@ -273,74 +273,74 @@ state 16
     (11) number -> number DIGIT .
 
     DIGIT           reduce using rule 11 (number -> number DIGIT .)
-    TIMES           reduce using rule 11 (number -> number DIGIT .)
-    DIVIDE          reduce using rule 11 (number -> number DIGIT .)
-    PLUS            reduce using rule 11 (number -> number DIGIT .)
-    MINUS           reduce using rule 11 (number -> number DIGIT .)
+    MUL             reduce using rule 11 (number -> number DIGIT .)
+    DIV             reduce using rule 11 (number -> number DIGIT .)
+    ADD             reduce using rule 11 (number -> number DIGIT .)
+    SUB             reduce using rule 11 (number -> number DIGIT .)
     $end            reduce using rule 11 (number -> number DIGIT .)
     RPAREN          reduce using rule 11 (number -> number DIGIT .)
 
 
 state 17
 
-    (2) expr -> expr PLUS term .
-    (5) term -> term . TIMES factor
-    (6) term -> term . DIVIDE factor
+    (2) expr -> expr ADD term .
+    (5) term -> term . MUL factor
+    (6) term -> term . DIV factor
 
-    PLUS            reduce using rule 2 (expr -> expr PLUS term .)
-    MINUS           reduce using rule 2 (expr -> expr PLUS term .)
-    $end            reduce using rule 2 (expr -> expr PLUS term .)
-    RPAREN          reduce using rule 2 (expr -> expr PLUS term .)
-    TIMES           shift and go to state 13
-    DIVIDE          shift and go to state 14
+    ADD             reduce using rule 2 (expr -> expr ADD term .)
+    SUB             reduce using rule 2 (expr -> expr ADD term .)
+    $end            reduce using rule 2 (expr -> expr ADD term .)
+    RPAREN          reduce using rule 2 (expr -> expr ADD term .)
+    MUL             shift and go to state 13
+    DIV             shift and go to state 14
 
 
 state 18
 
-    (3) expr -> expr MINUS term .
-    (5) term -> term . TIMES factor
-    (6) term -> term . DIVIDE factor
+    (3) expr -> expr SUB term .
+    (5) term -> term . MUL factor
+    (6) term -> term . DIV factor
 
-    PLUS            reduce using rule 3 (expr -> expr MINUS term .)
-    MINUS           reduce using rule 3 (expr -> expr MINUS term .)
-    $end            reduce using rule 3 (expr -> expr MINUS term .)
-    RPAREN          reduce using rule 3 (expr -> expr MINUS term .)
-    TIMES           shift and go to state 13
-    DIVIDE          shift and go to state 14
+    ADD             reduce using rule 3 (expr -> expr SUB term .)
+    SUB             reduce using rule 3 (expr -> expr SUB term .)
+    $end            reduce using rule 3 (expr -> expr SUB term .)
+    RPAREN          reduce using rule 3 (expr -> expr SUB term .)
+    MUL             shift and go to state 13
+    DIV             shift and go to state 14
 
 
 state 19
 
-    (5) term -> term TIMES factor .
+    (5) term -> term MUL factor .
 
-    TIMES           reduce using rule 5 (term -> term TIMES factor .)
-    DIVIDE          reduce using rule 5 (term -> term TIMES factor .)
-    PLUS            reduce using rule 5 (term -> term TIMES factor .)
-    MINUS           reduce using rule 5 (term -> term TIMES factor .)
-    $end            reduce using rule 5 (term -> term TIMES factor .)
-    RPAREN          reduce using rule 5 (term -> term TIMES factor .)
+    MUL             reduce using rule 5 (term -> term MUL factor .)
+    DIV             reduce using rule 5 (term -> term MUL factor .)
+    ADD             reduce using rule 5 (term -> term MUL factor .)
+    SUB             reduce using rule 5 (term -> term MUL factor .)
+    $end            reduce using rule 5 (term -> term MUL factor .)
+    RPAREN          reduce using rule 5 (term -> term MUL factor .)
 
 
 state 20
 
-    (6) term -> term DIVIDE factor .
+    (6) term -> term DIV factor .
 
-    TIMES           reduce using rule 6 (term -> term DIVIDE factor .)
-    DIVIDE          reduce using rule 6 (term -> term DIVIDE factor .)
-    PLUS            reduce using rule 6 (term -> term DIVIDE factor .)
-    MINUS           reduce using rule 6 (term -> term DIVIDE factor .)
-    $end            reduce using rule 6 (term -> term DIVIDE factor .)
-    RPAREN          reduce using rule 6 (term -> term DIVIDE factor .)
+    MUL             reduce using rule 6 (term -> term DIV factor .)
+    DIV             reduce using rule 6 (term -> term DIV factor .)
+    ADD             reduce using rule 6 (term -> term DIV factor .)
+    SUB             reduce using rule 6 (term -> term DIV factor .)
+    $end            reduce using rule 6 (term -> term DIV factor .)
+    RPAREN          reduce using rule 6 (term -> term DIV factor .)
 
 
 state 21
 
     (8) factor -> LPAREN expr RPAREN .
 
-    TIMES           reduce using rule 8 (factor -> LPAREN expr RPAREN .)
-    DIVIDE          reduce using rule 8 (factor -> LPAREN expr RPAREN .)
-    PLUS            reduce using rule 8 (factor -> LPAREN expr RPAREN .)
-    MINUS           reduce using rule 8 (factor -> LPAREN expr RPAREN .)
+    MUL             reduce using rule 8 (factor -> LPAREN expr RPAREN .)
+    DIV             reduce using rule 8 (factor -> LPAREN expr RPAREN .)
+    ADD             reduce using rule 8 (factor -> LPAREN expr RPAREN .)
+    SUB             reduce using rule 8 (factor -> LPAREN expr RPAREN .)
     $end            reduce using rule 8 (factor -> LPAREN expr RPAREN .)
     RPAREN          reduce using rule 8 (factor -> LPAREN expr RPAREN .)
 
