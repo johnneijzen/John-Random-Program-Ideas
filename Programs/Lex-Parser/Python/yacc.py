@@ -1560,7 +1560,7 @@ class Grammar(object):
             if s[0] in "'\"":
                 try:
                     c = eval(s)
-                    if (len(c) > 1):
+                    if len(c) > 1:
                         raise GrammarError('%s:%d: Literal token %s in rule %r may only be a single character' %
                                            (file, line, s, prodname))
                     if c not in self.Terminals:

@@ -546,7 +546,7 @@ def _statetoken(s, names):
         states = tuple(names)
 
     tokenname = '_'.join(parts[i:])
-    return (states, tokenname)
+    return states, tokenname
 
 
 # -----------------------------------------------------------------------------
@@ -783,7 +783,7 @@ class LexerReflect(object):
 
                 try:
                     c = re.compile('(?P<%s>%s)' % (name, r), self.reflags)
-                    if (c.match('')):
+                    if c.match(''):
                         self.log.error("Regular expression for rule '%s' matches empty string", name)
                         self.error = True
                 except re.error as e:
