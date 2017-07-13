@@ -1,4 +1,28 @@
 /*
+The MIT License (MIT)
+
+Copyright (c) 2017 John Neijzen
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+/*
     @author:    John V. Neijzen
     @activity:  1 - Narcissistic Numbers
     @section:   CSA 12 A
@@ -18,11 +42,11 @@ int power(int rem, int digit);
 
 void main()
 {
-    int userInput = 0; // Var we used to store use user input
+    int userInput = 0; // User Input
     int digit = 0; // Number of digits
-    int isItNarcissisticNumber = 0; // Used store condition with function narcissisticNumbers
+    int isItNarcissisticNumber = 0; // Used store condition with function narcissisticNumbers 1 == True 0 == False
 
-    do { // Loop do-while
+    do {
         printf("\nNote: To Exit Program type 0 ");
         printf("\nEnter number: ");
         scanf("%d", &userInput);
@@ -41,8 +65,7 @@ void main()
 /*
     Function: numPlaces
 
-    Used to check how many digits place there are so i can correct power by what
-    formula for Narcissistic.
+    Used to check how many digits place there are.
 */
 
 int numPlaces (int n) {
@@ -61,15 +84,14 @@ int numPlaces (int n) {
     Function: power
 
     It ask for 2 thing number and how times you power it
-
-    like rem is 2 and digit is 3 then it be 2 * 2 * 2 = 8
+    like rem is 2 and num is 3 then it be 2 * 2 * 2 = 8
 */
 
-int power(int rem, int digit)
+int power(int rem, int num)
 {
     int pow = 1;
     int count = 1;
-    while(count <= digit){
+    while(count <= num){
         pow = pow * rem;
         count++;
     }
