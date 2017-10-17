@@ -2,8 +2,8 @@ $path = Read-Host "Please enter path to osu song folder"
 $check = Read-Host "is this correct path to your osu song folder: $path"
 if($check -eq "y")
 {
-	Write-Host "Running Now Note: Remove-Item has no output this may take while"
-	# Delete Video Elements
+    Write-Host "Running Now Note: Remove-Item has no output this may take while"
+    # Delete Video Elements
     Get-ChildItem -path $path -include *.avi -Recurse | Remove-Item
     Get-ChildItem -path $path -include *.flv -Recurse | Remove-Item
     Get-ChildItem -path $path -include *.wmv -Recurse | Remove-Item
@@ -56,12 +56,10 @@ if($check -eq "y")
     Get-ChildItem -path $path -include spinner-circle.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include spinner-clear.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include spinner-metre.png -Recurse | Remove-Item
-	Get-ChildItem -path $path -include spinner-osu.png -Recurse | Remove-Item
-	Get-ChildItem -path $path -include spinner-spin.png -Recurse | Remove-Item
-	Write-Host "Thanks for using OSU! Video Deleter"
-	Read-Host "Press Enter to end"
+    Get-ChildItem -path $path -include spinner-osu.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include spinner-spin.png -Recurse | Remove-Item
+    Write-Host "Thanks for using OSU! Video Deleter"
+    Read-Host "Press Enter to end"
 } else {
     Write-Host "Restart Program"
 }
-
-	
