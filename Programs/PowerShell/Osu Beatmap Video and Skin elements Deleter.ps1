@@ -14,7 +14,6 @@ if($check -eq "y")
     Get-ChildItem -path $path -include cursortrail.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include fail-background.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-back.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include pause-continue.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-overlay.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-replay.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-retry.png -Recurse | Remove-Item
