@@ -6,10 +6,7 @@ if($check -eq "y")
     Get-ChildItem -path $path -include *.flv -Recurse | Remove-Item
     Get-ChildItem -path $path -include *.wmv -Recurse | Remove-Item
     Get-ChildItem -path $path -include *.mp4 -Recurse | Remove-Item
-}
-else
-{
+} else {
     Write-Host "Restart Program"
 }
 Write-Host "Thanks for using OSU! Video Deleter"
-	
