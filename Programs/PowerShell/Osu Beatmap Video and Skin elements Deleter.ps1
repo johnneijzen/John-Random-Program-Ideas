@@ -15,9 +15,26 @@ if($check -eq "y")
     Get-ChildItem -path $path -include fail-background.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-back.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-continue.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include pause-overlay.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-replay.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-retry.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include play-warningarrow.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-0.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-1.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-2.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-3.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-4.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-5.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-6.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-7.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-8.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-9.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-comma.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-dot.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-percent.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-x.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include section-fail.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include section-pass.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include star2.png -Recurse | Remove-Item
 
     # Delete Osu!std Skin Elements
@@ -32,6 +49,17 @@ if($check -eq "y")
     Get-ChildItem -path $path -include comboburst-7 -Recurse | Remove-Item
     Get-ChildItem -path $path -include comboburst-8 -Recurse | Remove-Item
     Get-ChildItem -path $path -include comboburst-9 -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-0.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-1.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-2.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-3.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-4.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-5.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-6.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-7.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-8.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-9.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include followpoint.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit0.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit50.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit100.png -Recurse | Remove-Item
@@ -50,6 +78,11 @@ if($check -eq "y")
     Get-ChildItem -path $path -include sliderb2.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderb3.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderb4.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sliderb5.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sliderb6.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sliderb7.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sliderb8.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sliderb9.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderscorepoint.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include spinner-approachcircle.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include spinner-background.png -Recurse | Remove-Item
