@@ -38,16 +38,16 @@ if($check -eq "y")
 
     # Delete Osu!std Skin Elements
     Get-ChildItem -path $path -include approachcircle.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-0 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-1 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-2 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-3 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-4 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-5 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-6 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-7 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-8 -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst-9 -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-0.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-1.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-2.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-3.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-4.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-5.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-6.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-7.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-8.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-9.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include default-0.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include default-1.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include default-2.png -Recurse | Remove-Item
