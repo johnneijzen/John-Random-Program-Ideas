@@ -20,7 +20,7 @@ if($check -eq "y")
     Get-ChildItem -path $path -include pause-retry.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include play-warningarrow.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include play-skip.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include score-0.png, score-1.png, score-2.png, score-3.png, score-4.png, score-5.png, score-6.png, score-7.png, score-8.png, score-9.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include score-*.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include score-comma.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include score-dot.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include score-percent.png -Recurse | Remove-Item
@@ -31,9 +31,9 @@ if($check -eq "y")
 
     # Delete Osu!std Skin Elements
     Get-ChildItem -path $path -include approachcircle.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include comboburst.png, comboburst-0.png, comboburst-1.png, comboburst-2.png, comboburst-3.png, comboburst-4.png, comboburst-5.png, comboburst-6.png, comboburst-7.png, comboburst-8.png, comboburst-9.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include default-0.png, default-1.png, default-2.png, default-3.png, default-4.png, default-5.png, default-6.png, default-7.png, default-8.png, default-9.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include followpoint.png, followpoint-0.png, followpoint-1.png, followpoint-2.png, followpoint-3.png, followpoint-4.png, followpoint-5.png, followpoint-6.png, followpoint-7.png, followpoint-8.png, followpoint-9.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst.png, comboburst-*.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include default-*.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include followpoint.png, followpoint-*.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit0.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit50.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit100.png -Recurse | Remove-Item
@@ -46,7 +46,7 @@ if($check -eq "y")
     Get-ChildItem -path $path -include lighting.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include reversearrow.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderfollowcircle.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include sliderb.png, sliderb0.png, sliderb1.png, sliderb2.png, sliderb3.png, sliderb4.png, sliderb5.png, sliderb6.png, sliderb7.png, sliderb8.png, sliderb9.png, sliderb10.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sliderb.png, sliderb*.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderpoint10.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderpoint30.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderscorepoint.png -Recurse | Remove-Item
@@ -65,33 +65,37 @@ if($check -eq "y")
     Get-ChildItem -path $path -include spinner-top.png -Recurse | Remove-Item
 
     # Delete Sound Sets Skin Elements
+    Get-ChildItem -path $path -include applause -Recurse | Remove-Item
     Get-ChildItem -path $path -include count1s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include count2s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include count3s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include combobreak.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include comboburst-*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include failsound.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include readys.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include drum-hitnormal*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include drum-hitclap*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include drum-hitfinish*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include drum-hitwhistle*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include drum-slidertick*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include drum-sliderslide*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include drum-sliderwhistle*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitnormal*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitclap*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitfinish*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitwhistle*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-slidertick*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-sliderslide*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-sliderwhistle*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-hitnormal*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-hitclap*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-hitfinish*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-hitwhistle*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-slidertick*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-sliderslide*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-sliderwhistle*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include drum-hitnormal.wav, drum-hitnormal*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include drum-hitclap.wav, drum-hitclap*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include drum-hitfinish.wav, drum-hitfinish*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include drum-hitwhistle.wav, drum-hitwhistle*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include drum-slidertick.wav, drum-slidertick*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include drum-sliderslide.wav, drum-sliderslide*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include drum-sliderwhistle.wav, drum-sliderwhistle*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitnormal.wav, normal-hitnormal*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitclap.wav, normal-hitclap*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitfinish.wav, normal-hitfinish*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitwhistle.wav, normal-hitwhistle*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-slidertick.wav, normal-slidertick*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-sliderslide.wav, normal-sliderslide*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-sliderwhistle.wav, normal-sliderwhistle*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sectionfail.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sectionpass.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-hitnormal.wav, soft-hitnormal*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-hitclap.wav, soft-hitclap*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-hitfinish.wav, soft-hitfinish*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-hitwhistle.wav, soft-hitwhistle*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-slidertick.wav, soft-slidertick*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-sliderslide.wav, soft-sliderslide*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-sliderwhistle.wav, soft-sliderwhistle*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include spinnerspin.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include spinnerbonus.wav -Recurse | Remove-Item
 
