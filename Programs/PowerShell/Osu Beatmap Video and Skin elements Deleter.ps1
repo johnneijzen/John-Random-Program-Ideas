@@ -88,7 +88,7 @@ if($check -eq "y")
     Get-ChildItem -path $path -include soft-hitfinish*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-hitwhistle*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-slidertick*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-sliderslide*.wav-Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-sliderslide*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-sliderwhistle*.wav -Recurse | Remove-Item
 
     Write-Host "Thanks for using OSU! Video Deleter"
