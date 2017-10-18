@@ -68,6 +68,8 @@ if($check -eq "y")
     Get-ChildItem -path $path -include count1s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include count2s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include count3s.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include combobreak.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include failsound.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include readys.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include drum-hitnormal*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include drum-hitclap*.wav -Recurse | Remove-Item
@@ -76,7 +78,7 @@ if($check -eq "y")
     Get-ChildItem -path $path -include drum-slidertick*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include drum-sliderslide*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include drum-sliderwhistle*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitnormal*.wav-Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitnormal*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include normal-hitclap*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include normal-hitfinish*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include normal-hitwhistle*.wav -Recurse | Remove-Item
@@ -90,6 +92,8 @@ if($check -eq "y")
     Get-ChildItem -path $path -include soft-slidertick*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-sliderslide*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-sliderwhistle*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include spinnerspin.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include spinnerbonus.wav -Recurse | Remove-Item
 
     Write-Host "Thanks for using OSU! Video Deleter"
     Read-Host "Press Enter to end"
