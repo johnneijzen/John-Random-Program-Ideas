@@ -33,7 +33,7 @@ if($check -eq "y")
     Get-ChildItem -path $path -include approachcircle.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include comboburst.png, comboburst-0.png, comboburst-1.png, comboburst-2.png, comboburst-3.png, comboburst-4.png, comboburst-5.png, comboburst-6.png, comboburst-7.png, comboburst-8.png, comboburst-9.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include default-0.png, default-1.png, default-2.png, default-3.png, default-4.png, default-5.png, default-6.png, default-7.png, default-8.png, default-9.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include followpoint.png, followpoint-0.png, followpoint-1.png, followpoint-2.png, followpoint-3.png, followpoint-4.png, followpoint-5.png, followpoint-6.png, followpoint-7.png followpoint-8.png, followpoint-9.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include followpoint.png, followpoint-0.png, followpoint-1.png, followpoint-2.png, followpoint-3.png, followpoint-4.png, followpoint-5.png, followpoint-6.png, followpoint-7.png, followpoint-8.png, followpoint-9.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit0.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit50.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include hit100.png -Recurse | Remove-Item
