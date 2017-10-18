@@ -69,19 +69,19 @@ if($check -eq "y")
     Get-ChildItem -path $path -include count2s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include count3s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include readys.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitnormal.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitclap.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitfinish.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-hitwhistle.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include normal-slidertick.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitnormal.wav, normal-hitnormal1.wav, normal-hitnormal2.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitclap.wav, normal-hitclap1, normal-hitclap2 -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitfinish.wav, normal-hitfinish1.wav, normal-hitfinish2.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-hitwhistle.wav, normal-hitwhistle1.wav, normal-hitwhistle2.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include normal-slidertick.wav, normal-slidertick1.wav, normal-slidertick2.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include normal-sliderslide.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include normal-sliderwhistle.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-hitnormal.wav, soft-hitnormal1.wav, soft-hitnormal2.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-hitnormal.wav, soft-hitnormal1.wav, soft-hitnormal2.wav, soft-hitnormal3.wav, soft-hitnormal4.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-hitclap.wav, soft-hitclap1.wav, soft-hitclap2.wav, soft-hitclap3.wav, soft-hitclap4.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-hitfinish.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-hitfinish.wav, soft-hitfinish1.wav, soft-hitfinish2.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-hitwhistle.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-slidertick.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include soft-sliderslide.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include soft-sliderslide.wav, soft-sliderslide1, soft-sliderslide2, soft-sliderslide3 -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-sliderwhistle.wav -Recurse | Remove-Item
 
     Write-Host "Thanks for using OSU! Video Deleter"
