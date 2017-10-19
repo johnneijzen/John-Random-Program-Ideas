@@ -19,12 +19,17 @@ if($check -eq "y")
     Get-ChildItem -path $path -include pause-replay.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include pause-retry.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include play-warningarrow.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include play-skip.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include play-skip.png, play-skip-*.png  -Recurse | Remove-Item
     Get-ChildItem -path $path -include score-*.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include score-comma.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include score-dot.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include score-percent.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include score-x.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include scorebar-bg.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include scorebar-colour.png, scorebar-colour-*.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include scorebar-ki.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include scorebar-kidanger.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include scorebar-kidanger2.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include section-fail.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include section-pass.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include star2.png -Recurse | Remove-Item
@@ -45,7 +50,7 @@ if($check -eq "y")
     Get-ChildItem -path $path -include hitcircleoverlay.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include lighting.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include reversearrow.png -Recurse | Remove-Item
-    Get-ChildItem -path $path -include sliderfollowcircle.png -Recurse | Remove-Item
+    Get-ChildItem -path $path -include sliderfollowcircle.png, sliderfollowcircle-*.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderb.png, sliderb*.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderpoint10.png -Recurse | Remove-Item
     Get-ChildItem -path $path -include sliderpoint30.png -Recurse | Remove-Item
@@ -65,7 +70,7 @@ if($check -eq "y")
     Get-ChildItem -path $path -include spinner-top.png -Recurse | Remove-Item
 
     # Delete Sound Sets Skin Elements
-    Get-ChildItem -path $path -include applause -Recurse | Remove-Item
+    Get-ChildItem -path $path -include applause.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include count1s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include count2s.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include count3s.wav -Recurse | Remove-Item
@@ -96,8 +101,8 @@ if($check -eq "y")
     Get-ChildItem -path $path -include soft-slidertick.wav, soft-slidertick*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-sliderslide.wav, soft-sliderslide*.wav -Recurse | Remove-Item
     Get-ChildItem -path $path -include soft-sliderwhistle.wav, soft-sliderwhistle*.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include spinnerspin.wav -Recurse | Remove-Item
-    Get-ChildItem -path $path -include spinnerbonus.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include spinnerspin.wav, spinnerspin*.wav -Recurse | Remove-Item
+    Get-ChildItem -path $path -include spinnerbonus.wav, spinnerbonus*.wav -Recurse | Remove-Item
 
     Write-Host "Thanks for using OSU! Video Deleter"
     Read-Host "Press Enter to end"
