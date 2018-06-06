@@ -107,5 +107,5 @@ if($check -eq "y")
     Write-Host "Thanks for using OSU! Video Deleter"
     Read-Host "Press Enter to end"
 } else {
-    Write-Host "Restart Program"
+    Write-Host "Please Restart Program"
 }
