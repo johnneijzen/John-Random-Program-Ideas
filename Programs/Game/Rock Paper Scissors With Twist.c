@@ -102,7 +102,7 @@ void playerKeyEvent()
            	    for (int i =0;i<3;i++)
 		    {
 		       if(key == keys1[i])
-                          playerTwoMoves = i+1;
+                          playerOneMoves = i+1;
 		    }
                 }
                 if(moves == 5)
@@ -110,7 +110,7 @@ void playerKeyEvent()
                     for (int i =0;i<5;i++)
 		    {
 		       if(key == keys1[i])
-                          playerTwoMoves = i+1;
+                          playerOneMoves = i+1;
 		    }
                 }
                 if(moves == 7)
@@ -118,7 +118,7 @@ void playerKeyEvent()
 		    for (int i =0;i<7;i++)
 		    {
 		       if(key == keys1[i])
-                          playerTwoMoves = i+1;
+                          playerOneMoves = i+1;
 		    }
 		}
             }
