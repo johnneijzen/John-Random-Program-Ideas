@@ -46,106 +46,49 @@ int draw = 0;
 int moves = 3;
 char key;
 
+void aiChooseMove(int counterChance) 
+{	
+	int r = 1 + (rand() % 10); // It give rand from 1 to 10
+	if (r<=counterChance)
+	{ 
+	   int aiChoices[] = {2,3,1,1,2,2,1};
+	   for(int i=1;i<=7;i++)
+	   {
+	     if(playerOneMoves == i)
+              playerTwoMoves = aiChoices[i-1];
+	   }
+	}
+	else
+	{
+	   int aiChoices[] = {3,1,2,2,1,1,2,};
+	   for(int i=1;i<=7;i++)
+	   {
+	     if(playerOneMoves == i)
+              playerTwoMoves = aiFails[i-1];
+	   }	
+	}
+}
+
 void aiEasy() // only 3 out 10 chance to counter
 {
-    int r = 1 + (rand() % 10); // It give rand from 1 to 10
-
-    if(r <= 3)
-    {
-        if(playerOneMoves == 1)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 2)
-            playerTwoMoves = 3;
-        if(playerOneMoves == 3)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 4)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 5)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 6)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 7)
-            playerTwoMoves = 1;
-    }
-    else
-    {
-        if(playerOneMoves == 1)
-            playerTwoMoves = 3;
-        if(playerOneMoves == 2)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 3)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 4)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 5)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 6)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 7)
-            playerTwoMoves = 2;
-    }
+    aiChooseMove(3);
 }
 
 void aiHard() // only 7 out 10 chance to counter
 {
-    int r = 1 + (rand() % 10); // It give rand from 1 to 10
-
-    if(r <= 7)
-    {
-        if(playerOneMoves == 1)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 2)
-            playerTwoMoves = 3;
-        if(playerOneMoves == 3)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 4)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 5)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 6)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 7)
-            playerTwoMoves = 1;
-    }
-    else
-    {
-        if(playerOneMoves == 1)
-            playerTwoMoves = 3;
-        if(playerOneMoves == 2)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 3)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 4)
-            playerTwoMoves = 2;
-        if(playerOneMoves == 5)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 6)
-            playerTwoMoves = 1;
-        if(playerOneMoves == 7)
-            playerTwoMoves = 2;
-    }
+    aiChooseMove(7);
 }
 
 void aiUnfair() // ALLWAYS WINS XD
 {
-    if(playerOneMoves == 1)
-        playerTwoMoves = 2;
-    if(playerOneMoves == 2)
-        playerTwoMoves = 3;
-    if(playerOneMoves == 3)
-        playerTwoMoves = 1;
-    if(playerOneMoves == 4)
-        playerTwoMoves = 1;
-    if(playerOneMoves == 5)
-        playerTwoMoves = 2;
-    if(playerOneMoves == 6)
-        playerTwoMoves = 2;
-    if(playerOneMoves == 7)
-        playerTwoMoves = 1;
+  aiChooseMove(10);
 }
 
 void playerKeyEvent()
-{
+{         
+    char keys1[] = ['q','w','e','a','s','d','x','\0'];
+    char keys2[] = ['u','i','o','j','k','l','m','\0'];
+
     while((playerOneMoves == 0)||(playerTwoMoves == 0))
     {
         if (kbhit())
@@ -156,43 +99,28 @@ void playerKeyEvent()
             {
                 if(moves == 3)
                 {
-                    if(key == 'q')
-                        playerOneMoves = 1;
-                    else if(key == 'w')
-                        playerOneMoves = 2;
-                    else if(key == 'e')
-                        playerOneMoves = 3;
+           	    for (int i =0;i<3;i++)
+		    {
+		       if(key == keys1[i])
+                          playerTwoMoves = i+1;
+		    }
                 }
                 if(moves == 5)
                 {
-                    if(key == 'q')
-                        playerOneMoves = 1;
-                    else if(key == 'w')
-                        playerOneMoves = 2;
-                    else if(key == 'e')
-                        playerOneMoves = 3;
-                    else if(key == 'a')
-                        playerOneMoves = 4;
-                    else if(key == 's')
-                        playerOneMoves = 5;
+                    for (int i =0;i<5;i++)
+		    {
+		       if(key == keys1[i])
+                          playerTwoMoves = i+1;
+		    }
                 }
                 if(moves == 7)
                 {
-                    if(key == 'q')
-                        playerOneMoves = 1;
-                    else if(key == 'w')
-                        playerOneMoves = 2;
-                    else if(key == 'e')
-                        playerOneMoves = 3;
-                    else if(key == 'a')
-                        playerOneMoves = 4;
-                    else if(key == 's')
-                        playerOneMoves = 5;
-                	else if(key == 'd')
-                    	playerOneMoves = 6;
-                   	else if(key == 'x')
-                    	playerOneMoves = 7;
-				}
+		    for (int i =0;i<7;i++)
+		    {
+		       if(key == keys1[i])
+                          playerTwoMoves = i+1;
+		    }
+		}
             }
             if(AI == 0)
             {
@@ -200,41 +128,28 @@ void playerKeyEvent()
                 {
                     if(moves == 3)
                     {
-                        if(key == 'u')
-                            playerTwoMoves = 1;
-                        else if(key == 'i')
-                            playerTwoMoves = 2;
-                        else if(key == 'o')
-                            playerTwoMoves = 3;
+                        for (int i =0;i<3;i++)
+			{
+			if(key == keys2[i])
+                            playerTwoMoves = i+1;
+			}
                     }
                     if(moves == 5)
                     {
-                        if(key == 'u')
-                            playerTwoMoves = 1;
-                        else if(key == 'i')
-                            playerTwoMoves = 2;
-                        else if(key == 'o')
-                            playerTwoMoves = 3;
-                        else if(key == 'j')
-                            playerTwoMoves = 4;
-                        else if(key == 'k')
-                            playerTwoMoves = 5;
+                        for (int i =0;i<5;i++)
+			{
+			if(key == keys2[i])
+                            playerTwoMoves = i+1;
+			}
                     }
                     if(moves == 7)
-                        if(key == 'u')
-                            playerTwoMoves = 1;
-                        else if(key == 'i')
-                            playerTwoMoves = 2;
-                        else if(key == 'o')
-                            playerTwoMoves = 3;
-                        else if(key == 'j')
-                            playerTwoMoves = 4;
-                        else if(key == 'k')
-                            playerTwoMoves = 5;
-                    	else if(key == 'l')
-                    		playerTwoMoves = 6;
-                    	else if(key == 'm')
-                    		playerTwoMoves = 7;
+		    {
+                        for (int i =0;i<7;i++)
+			{
+			if(key == keys2[i])
+                            playerTwoMoves = i+1;
+			}
+		    }
                 }
             }
             else
@@ -252,73 +167,61 @@ void playerKeyEvent()
 
 void check()
 {
+   /*
+    * Rock Win Against Scissors
+    * Rock Win Against Lizard
+    * Rock Win Against Gun
+    * Paper Win Against Rock
+    * Paper Win Against Spock
+    * Paper Win Against Dog
+    * Scissors Win Against Paper
+    * Scissors Win Against Lizard
+    * Scissors Win Against Gun
+    * Lizard Win Against Paper
+    * Lizard Win Against Spock
+    * Lizard Win Against Dog
+    * Spock Win Against Rock
+    * Spock Win Against Scissors
+    * Spock Win Against Gun
+    * Dog Win Against Rock
+    * Dog Win Against Scissors
+    * Dog Win Against Spock
+    * Gun Win Against Paper
+    * Gun Win Against Paper
+    * Gun Win Against Paper
+    */
+	
     // 1 = Rock. 2 = Paper. 3 = Scissors. 4 = lizard. 5 = Spock. 6 = Dog. 7 = Gun.
     // Tied Check Code
-    if((playerOneMoves == 1)&&(playerTwoMoves == 1)||
-       (playerOneMoves == 2)&&(playerTwoMoves == 2)||
-       (playerOneMoves == 3)&&(playerTwoMoves == 3)||
-       (playerOneMoves == 4)&&(playerTwoMoves == 4)||
-       (playerOneMoves == 5)&&(playerTwoMoves == 5)||
-       (playerOneMoves == 6)&&(playerTwoMoves == 6)||
-       (playerOneMoves == 7)&&(playerTwoMoves == 7))
-    {
-        printf("Draw");
-        draw = draw + 1;
+    for(int i=1;i>=7;i++){
+    	if((playerOneMoves == i)&&(playerTwoMoves == i))
+    	{
+            printf("Draw");
+            draw = draw + 1;
+	    break;
+    	} else continue;
     }
 
+    int posiblePlayerMoves[] = {1,1,1,2,2,2,3,3,3,4,4,4,5,5,5,6,6,6,7,7,7};
+    int loseConditions[]     = {3,4,7,1,5,6,2,4,7,2,5,6,1,3,7,6,6,2,4};
+    
     // Player 1 Win
-    if((playerOneMoves == 1)&&(playerTwoMoves == 3)|| // Rock Win Against Scissors
-       (playerOneMoves == 1)&&(playerTwoMoves == 4)|| // Rock Win Against Lizard
-       (playerOneMoves == 1)&&(playerTwoMoves == 7)|| // Rock Win Against Gun
-       (playerOneMoves == 2)&&(playerTwoMoves == 1)|| // Paper Win Against Rock
-       (playerOneMoves == 2)&&(playerTwoMoves == 5)|| // Paper Win Against Spock
-       (playerOneMoves == 2)&&(playerTwoMoves == 6)|| // Paper Win Against Dog
-       (playerOneMoves == 3)&&(playerTwoMoves == 2)|| // Scissors Win Against Paper
-       (playerOneMoves == 3)&&(playerTwoMoves == 4)|| // Scissors Win Against Lizard
-       (playerOneMoves == 3)&&(playerTwoMoves == 7)|| // Scissors Win Against Gun
-       (playerOneMoves == 4)&&(playerTwoMoves == 2)|| // Lizard Win Against Paper
-       (playerOneMoves == 4)&&(playerTwoMoves == 5)|| // Lizard Win Against Spock
-       (playerOneMoves == 4)&&(playerTwoMoves == 6)|| // Lizard Win Against Dog
-       (playerOneMoves == 5)&&(playerTwoMoves == 1)|| // Spock Win Against Rock
-       (playerOneMoves == 5)&&(playerTwoMoves == 3)|| // Spock Win Against Scissors
-       (playerOneMoves == 5)&&(playerTwoMoves == 7)|| // Spock Win Against Gun
-       (playerOneMoves == 6)&&(playerTwoMoves == 6)|| // Dog Win Against Rock
-       (playerOneMoves == 6)&&(playerTwoMoves == 6)|| // Dog Win Against Scissors
-       (playerOneMoves == 6)&&(playerTwoMoves == 6)|| // Dog Win Against Spock
-       (playerOneMoves == 7)&&(playerTwoMoves == 2)|| // Gun Win Against Paper
-       (playerOneMoves == 7)&&(playerTwoMoves == 4)|| // Gun Win Against Paper
-       (playerOneMoves == 7)&&(playerTwoMoves == 6))  // Gun Win Against Paper
-    {
-        printf("Player 1 Win");
-        playerTwoLives = playerTwoLives - 1;
+    for (int i=0;i<21;i++) {
+    	if((playerOneMoves == posiblePlayerMoves[i]) && (playerTwoMoves==loseConditions[i])){
+		printf("Player 1 Win");
+        	playerTwoLives = playerTwoLives - 1;
+		break;
+	} else continue;
     }
-
-    // Player 2 Win
-    if((playerTwoMoves == 1)&&(playerOneMoves == 3)|| // Rock Win Against Scissors
-       (playerTwoMoves == 1)&&(playerOneMoves == 4)|| // Rock Win Against Lizard
-       (playerTwoMoves == 1)&&(playerOneMoves == 7)|| // Rock Win Against Gun
-       (playerTwoMoves == 2)&&(playerOneMoves == 1)|| // Paper Win Against Rock
-       (playerTwoMoves == 2)&&(playerOneMoves == 5)|| // Paper Win Against Spock
-       (playerTwoMoves == 2)&&(playerOneMoves == 6)|| // Paper Win Against Dog
-       (playerTwoMoves == 3)&&(playerOneMoves == 2)|| // Scissors Win Against Paper
-       (playerTwoMoves == 3)&&(playerOneMoves == 4)|| // Scissors Win Against Lizard
-       (playerTwoMoves == 3)&&(playerOneMoves == 7)|| // Scissors Win Against Gun
-       (playerTwoMoves == 4)&&(playerOneMoves == 2)|| // Lizard Win Against Paper
-       (playerTwoMoves == 4)&&(playerOneMoves == 5)|| // Lizard Win Against Spock
-       (playerTwoMoves == 4)&&(playerOneMoves == 6)|| // Lizard Win Against Dog
-       (playerTwoMoves == 5)&&(playerOneMoves == 1)|| // Spock Win Against Rock
-       (playerTwoMoves == 5)&&(playerOneMoves == 3)|| // Spock Win Against Scissors
-       (playerTwoMoves == 5)&&(playerOneMoves == 7)|| // Spock Win Against Gun
-       (playerTwoMoves == 6)&&(playerOneMoves == 6)|| // Dog Win Against Rock
-       (playerTwoMoves == 6)&&(playerOneMoves == 6)|| // Dog Win Against Scissors
-       (playerTwoMoves == 6)&&(playerOneMoves == 6)|| // Dog Win Against Spock
-       (playerTwoMoves == 7)&&(playerOneMoves == 2)|| // Gun Win Against Paper
-       (playerTwoMoves == 7)&&(playerOneMoves == 4)|| // Gun Win Against Paper
-       (playerTwoMoves == 7)&&(playerOneMoves == 6))  // Gun Win Against Paper
-    {
-        printf("Player 2 Win");
-        playerOneLives = playerOneLives - 1;
+   // Player 2 Win
+    for (int i=0;i<21;i++) {
+    	if((playerTwoMoves == posiblePlayerMoves[i]) && (playerOneMoves==loseConditions[i])){
+		printf("Player 1 Win");
+        	playerOneLives = playerOneLives - 1;
+		break;
+	} else continue;
     }
+   
 }
 
 void roundDisplay()
@@ -326,7 +229,7 @@ void roundDisplay()
     printf("Player 1 Lives: %d. Player 2 Lives: %d. Draw: %d\n", playerOneLives, playerTwoLives, draw);
     if(moves == 3)
         printf("Q(Player1) Or U(Player2) is Rock,\nW(Player1) or I(Player2) is Paper,\nE(Player1) or O(Player2) is Scissors\n");
-	if(moves == 5)
+    if(moves == 5)
     {
         printf("Q(Player1) Or U(Player2) is Rock,\nW(Player1) or I(Player2) is Paper,\nE(Player1) or O(Player2) is Scissors\n");
         printf("A(Player1) or J(Player2) is Lizard,\nS(Player1) Or K(Player2) is Spock\n");
@@ -354,40 +257,22 @@ void roundDisplay()
 
 void moveDisplay()
 {
-    if (playerOneMoves == 1)
-        printf("Player One Pick Rock\n");
-    else if (playerOneMoves == 2)
-        printf("Player One Pick Paper\n");
-    else if (playerOneMoves == 3)
-        printf("Player One Pick Scissors\n");
-    else if (playerOneMoves == 4)
-        printf("Player One Pick Lizard\n");
-    else if (playerOneMoves == 5)
-        printf("Player One Pick Spock\n");
-    else if (playerOneMoves == 6)
-    	printf("Player One Pick Gun\n");
-    else if (playerOneMoves == 7)
-    	printf("Player One Pick Dog\n");
-
-    if (playerTwoMoves == 1)
-        printf("Player Two Pick Rock\n");
-    else if (playerTwoMoves == 2)
-        printf("Player Two Pick Paper\n");
-    else if (playerTwoMoves == 3)
-        printf("Player Two Pick Scissors\n");
-    else if (playerTwoMoves == 4)
-        printf("Player Two Pick Lizard\n");
-    else if (playerTwoMoves == 5)
-        printf("Player Two Pick Spock\n");
-    else if (playerTwoMoves == 6)
-        printf("Player Two Pick Gun\n");
-    else if (playerTwoMoves == 7)
-        printf("Player Two Pick Dog\n");
+    char* choices [] = ["Rock\n","Paper\n","Scissors\n","Lisard\n","Spock\n","Gun\n","Dog\n"];
+    for (int i=1;i<=7;i++){
+	    if (playerOneMoves == i)
+        	printf("Player One Pick ");
+	    	printf(choices[i-1]);
+    }
+    for (int i=1;i<=7;i++){
+	    if (playerTwoMoves == i)
+        	printf("Player One Pick ");
+	    	printf(choices[i-1]);
+    }
 }
 
 void main() // Main Loop
 {
-	srand(time(NULL));
+    srand(time(NULL));
     printf("Welcome to Rock Paper Scissors with twist\n");
     printf("Enter how many lives each player gets: \n");
     scanf("%d", &maxLives);
@@ -417,10 +302,7 @@ void main() // Main Loop
     	playerTwoMoves = 0;
     }
 
-    if(playerOneLives = 0)
-		printf("Player Two Wins Game");
-	else
-		printf("Player One Wins Game");
-
+    if(playerOneLives = 0) printf("Player Two Wins Game");
+    else printf("Player One Wins Game");
     getch();
 }
