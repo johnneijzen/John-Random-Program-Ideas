@@ -64,7 +64,7 @@ void aiChooseMove(int counterChance)
 	   for(int i=1;i<=7;i++)
 	   {
 	     if(playerOneMoves == i)
-              playerTwoMoves = aiFails[i-1];
+              playerTwoMoves = aiChoices[i-1];
 	   }	
 	}
 }
