@@ -86,8 +86,8 @@ void aiUnfair() // ALLWAYS WINS XD
 
 void playerKeyEvent()
 {         
-    char keys1[] = ['q','w','e','a','s','d','x','\0'];
-    char keys2[] = ['u','i','o','j','k','l','m','\0'];
+    char keys1[] = {'q','w','e','a','s','d','x','\0'};
+    char keys2[] = {'u','i','o','j','k','l','m','\0'};
 
     while((playerOneMoves == 0)||(playerTwoMoves == 0))
     {
@@ -257,7 +257,7 @@ void roundDisplay()
 
 void moveDisplay()
 {
-    char* choices [] = ["Rock\n","Paper\n","Scissors\n","Lisard\n","Spock\n","Gun\n","Dog\n"];
+    char* choices [] = {"Rock\n","Paper\n","Scissors\n","Lisard\n","Spock\n","Gun\n","Dog\n"};
     for (int i=1;i<=7;i++){
 	    if (playerOneMoves == i)
         	printf("Player One Pick ");
